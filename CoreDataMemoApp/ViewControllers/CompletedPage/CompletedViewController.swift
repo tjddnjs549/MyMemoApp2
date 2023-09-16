@@ -8,11 +8,97 @@
 import UIKit
 
 final class CompletedViewController: UIViewController {
-
+    
+    
+    var dummmy: [String] = ["asd", "asd1", "asd2", "asd3", "asd4", "asd5"]
+    // MARK: - properties
+    
+    private let tableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
+    
+    // MARK: - view lifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColors.white
-        self.title = "Completed"
+        viewMakeUI()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
+    private func viewMakeUI() {
+        naviSetting()
+        tableViewSetting()
+        tableViewMakeUI()
+    }
+}
+
+
+// MARK: - UITableViewDataSource
+
+extension CompletedViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dummmy.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.CompletedTableViewCell, for: indexPath) as! CompletedTableViewCell
+        cell.contentLabel.text = dummmy[indexPath.row]
+        cell.dateLabel.text = dummmy[indexPath.row]
+        return cell
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension CompletedViewController: UITableViewDelegate {
+    
+}
+
+
+// MARK: - MakeUI
+
+private extension CompletedViewController {
+    
+    func naviSetting() {
+        view.backgroundColor = UIColors.white
+        self.title = "Completed"
+        
+        navigationController?.navigationBar.tintColor = UIColors.black
+        let backButton = UIBarButtonItem(title: "뒤로", style: .done, target: self, action: #selector(backButtonTapped))
+        self.navigationItem.leftBarButtonItem = backButton
+    }
+    func tableViewSetting() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(CompletedTableViewCell.self, forCellReuseIdentifier: Cell.CompletedTableViewCell)
+    }
+    func tableViewMakeUI() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
+        
+    }
+}
+
+
+// MARK: - @objc func
+
+private extension CompletedViewController {
+    
+    @objc func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
+   
 }

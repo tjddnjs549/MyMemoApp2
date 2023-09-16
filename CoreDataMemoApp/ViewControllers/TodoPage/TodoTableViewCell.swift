@@ -10,9 +10,9 @@ import UIKit
 final class TodoTableViewCell: UITableViewCell {
     
     // MARK: - properties
-
     
-    let contentLabel: UILabel = {
+    
+    lazy var contentLabel: UILabel = {
         let ctn = UILabel()
         ctn.labelMakeUI(textColor: UIColors.black, font: Font.contentLabelFont)
         return ctn
@@ -45,7 +45,7 @@ final class TodoTableViewCell: UITableViewCell {
     }()
     
     // MARK: - init
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         cellMakeUI()
@@ -65,7 +65,6 @@ final class TodoTableViewCell: UITableViewCell {
 
 private extension TodoTableViewCell {
     
-    
     func cellMakeUI() {
         self.contentView.addSubview(stackView)
         self.contentView.addSubview(switchButton)
@@ -81,8 +80,6 @@ private extension TodoTableViewCell {
             switchButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
         ])
     }
-    
-    
     
 }
 

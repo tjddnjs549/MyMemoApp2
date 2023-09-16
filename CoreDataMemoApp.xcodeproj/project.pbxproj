@@ -29,6 +29,7 @@
 		63BB6C1D2AB5E582007BE767 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C1C2AB5E582007BE767 /* DetailViewController.swift */; };
 		63BB6C1F2AB5E595007BE767 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C1E2AB5E595007BE767 /* DetailView.swift */; };
 		63BB6C212AB5E6BB007BE767 /* Extension+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */; };
+		63C364C02AB647FC001E6971 /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364BF2AB647FC001E6971 /* CompletedTableViewCell.swift */; };
 		63E973E62AB570E600382FAB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63E973E52AB570E600382FAB /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		63BB6C1C2AB5E582007BE767 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		63BB6C1E2AB5E595007BE767 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextView.swift"; sourceTree = "<group>"; };
+		63C364BF2AB647FC001E6971 /* CompletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTableViewCell.swift; sourceTree = "<group>"; };
 		63E973E52AB570E600382FAB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */,
+				63C364BF2AB647FC001E6971 /* CompletedTableViewCell.swift */,
 			);
 			path = CompletedPage;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */,
 				63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */,
 				63BB6C0E2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift in Sources */,
+				63C364C02AB647FC001E6971 /* CompletedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

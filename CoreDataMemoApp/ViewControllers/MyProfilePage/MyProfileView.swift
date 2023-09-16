@@ -7,6 +7,6 @@
 
 import UIKit
 
-class MyProfileView: UIView {
+final class MyProfileView: UIView {
 
 }

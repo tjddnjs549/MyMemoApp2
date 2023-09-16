@@ -10,7 +10,6 @@ import UIKit
 
 public enum Font {
     static let buttonFont = UIFont.boldSystemFont(ofSize: 20)
-    //static let titleFont = UIFont.boldSystemFont(ofSize: 18)
     static let contentLabelFont = UIFont.boldSystemFont(ofSize: 18)
     static let dateLabelFont = UIFont.systemFont(ofSize: 14)
     static let TextViewFont = UIFont.boldSystemFont(ofSize: 14)
@@ -32,6 +31,7 @@ public enum UIColors {
 
 public enum Cell {
     static let todoTableViewCell: String = "TodoTableViewCell"
+    static let CompletedTableViewCell: String = "CompletedTableViewCell"
 }
 
 
