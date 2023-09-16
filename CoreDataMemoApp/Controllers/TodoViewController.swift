@@ -39,16 +39,19 @@ final class TodoViewController: UIViewController {
 
 extension TodoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
+        print(#function)
         return dummmy.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(#function)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.todoTableViewCell, for: indexPath) as! TodoTableViewCell
+        cell.contentLabel.text = dummmy[indexPath.row]
         
         
         
-        return UITableViewCell()
+        cell.selectionStyle = .none
+        return cell
     }
 }
 
@@ -79,6 +82,8 @@ private extension TodoViewController {
     func tableViewSetting() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(TodoTableViewCell.self, forCellReuseIdentifier: Cell.todoTableViewCell)
+        
     }
     
     func tableViewMakeUI() {
@@ -97,15 +102,13 @@ private extension TodoViewController {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColors.white
         appearance.shadowColor = .none
-        navigationController?.navigationBar.tintColor = UIColors.orange
+        navigationController?.navigationBar.tintColor = UIColors.black
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        //한글 버튼 넣을 시
         let plusButton = UIBarButtonItem(title: "추가", style: .done, target: self, action: #selector(plusButtonTapped))
         navigationItem.rightBarButtonItem = plusButton
-        
     }
 }
 

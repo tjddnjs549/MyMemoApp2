@@ -10,10 +10,10 @@ import UIKit
 
 public enum Font {
     static let buttonFont = UIFont.boldSystemFont(ofSize: 20)
-    static let titleFont = UIFont.boldSystemFont(ofSize: 18)
-    static let LabelFont = UIFont.systemFont(ofSize: 16)
-    static let TextViewFont = UIFont.systemFont(ofSize: 10)
-    static let commentFont = UIFont.boldSystemFont(ofSize: 12)
+    //static let titleFont = UIFont.boldSystemFont(ofSize: 18)
+    static let contentLabelFont = UIFont.boldSystemFont(ofSize: 18)
+    static let dateLabelFont = UIFont.systemFont(ofSize: 14)
+    static let TextViewFont = UIFont.boldSystemFont(ofSize: 12)
 }
 
 public enum CGColors {
@@ -27,6 +27,11 @@ public enum UIColors {
     static let black = UIColor.black
     static let white = UIColor.white
     static let clear = UIColor.clear
+    static let lightGray = UIColor.lightGray
+}
+
+public enum Cell {
+    static let todoTableViewCell: String = "TodoTableViewCell"
 }
 
 
