@@ -3,7 +3,6 @@
 //  CoreDataMemoApp
 //
 //  Created by 박성원 on 2023/09/16.
-//
 
 import UIKit
 
@@ -21,7 +20,7 @@ final class MainView: UIView {
     
     private let successToDoListButton: UIButton = {
         let successBtn = UIButton(type: .custom)
-        successBtn.buttonMakeUI(cornerRadius: 5, borderWidth: 2, borderColor: CGColors.orange, setTitle: "완료한 일 보기", font: Font.buttonFont, setTitleColor: UIColors.orange)
+        successBtn.buttonMakeUI(cornerRadius: 5, borderWidth: 2, borderColor: CGColors.orange, setTitle: "완료한 일 확인", font: Font.buttonFont, setTitleColor: UIColors.orange)
         successBtn.addTarget(self, action: #selector(successButtonTapped), for: .touchUpInside)
         return successBtn
     }()
@@ -46,7 +45,7 @@ final class MainView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        viewSetUp()
+        viewSetting()
     }
     
     required init?(coder: NSCoder) {
@@ -56,7 +55,7 @@ final class MainView: UIView {
     deinit {
         print("메인 페이지 사라짐")
     }
-    private func viewSetUp() {
+    private func viewSetting() {
         makeUI()
     }
     
@@ -89,15 +88,15 @@ private extension MainView {
         self.addSubview(homeImage)
         
         NSLayoutConstraint.activate([
-            homeImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            homeImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            homeImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            homeImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             homeImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
             homeImage.bottomAnchor.constraint(equalTo: self.buttonStackView.topAnchor, constant: -20),
             
             buttonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             buttonStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             buttonStackView.topAnchor.constraint(equalTo: homeImage.bottomAnchor, constant: 20),
-            buttonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300)
+            buttonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -320)
         ])
     }
 }
