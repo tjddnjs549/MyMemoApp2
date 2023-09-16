@@ -9,6 +9,9 @@ import UIKit
 
 final class DetailView: UIView {
     
+
+    
+    
     lazy var contentTextView: UITextView = {
         let content = UITextView()
         content.makeUITextView(backgroundColor: UIColors.white, text: "내용을 입력해주세요", font: Font.TextViewFont, borderWidth: 1.0, cornerRadius: 8, borderColor: CGColors.orange)

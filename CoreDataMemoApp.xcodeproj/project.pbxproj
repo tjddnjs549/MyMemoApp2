@@ -30,6 +30,9 @@
 		63BB6C1F2AB5E595007BE767 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C1E2AB5E595007BE767 /* DetailView.swift */; };
 		63BB6C212AB5E6BB007BE767 /* Extension+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */; };
 		63C364C02AB647FC001E6971 /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364BF2AB647FC001E6971 /* CompletedTableViewCell.swift */; };
+		63C364C32AB64DEC001E6971 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364C12AB64DEC001E6971 /* Task+CoreDataClass.swift */; };
+		63C364C42AB64DEC001E6971 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364C22AB64DEC001E6971 /* Task+CoreDataProperties.swift */; };
+		63C364C62AB64F00001E6971 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364C52AB64F00001E6971 /* CoreDataManager.swift */; };
 		63E973E62AB570E600382FAB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63E973E52AB570E600382FAB /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		63BB6C1E2AB5E595007BE767 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextView.swift"; sourceTree = "<group>"; };
 		63C364BF2AB647FC001E6971 /* CompletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTableViewCell.swift; sourceTree = "<group>"; };
+		63C364C12AB64DEC001E6971 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		63C364C22AB64DEC001E6971 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		63C364C52AB64F00001E6971 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		63E973E52AB570E600382FAB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +117,8 @@
 		63BB6BF62AB57252007BE767 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				63C364C12AB64DEC001E6971 /* Task+CoreDataClass.swift */,
+				63C364C22AB64DEC001E6971 /* Task+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,6 +156,7 @@
 		63BB6BFA2AB5728D007BE767 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				63C364C52AB64F00001E6971 /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -293,9 +302,11 @@
 				63BB6C1F2AB5E595007BE767 /* DetailView.swift in Sources */,
 				63BB6C1D2AB5E582007BE767 /* DetailViewController.swift in Sources */,
 				63BB6C022AB575CC007BE767 /* Constant.swift in Sources */,
+				63C364C42AB64DEC001E6971 /* Task+CoreDataProperties.swift in Sources */,
 				63BB6C062AB577D7007BE767 /* Extension+Label.swift in Sources */,
 				63BB6C212AB5E6BB007BE767 /* Extension+UITextView.swift in Sources */,
 				63BB6C0C2AB57FB1007BE767 /* MyProfileView.swift in Sources */,
+				63C364C62AB64F00001E6971 /* CoreDataManager.swift in Sources */,
 				63BB6C142AB596E8007BE767 /* TodoTableViewCell.swift in Sources */,
 				63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */,
 				63BB6C0A2AB57F9A007BE767 /* MainView.swift in Sources */,
@@ -305,6 +316,7 @@
 				634990C62AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld in Sources */,
 				63BB6C042AB577B9007BE767 /* Extension+Button.swift in Sources */,
 				634990BE2AB5700B00D4E339 /* SceneDelegate.swift in Sources */,
+				63C364C32AB64DEC001E6971 /* Task+CoreDataClass.swift in Sources */,
 				63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */,
 				63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */,
 				63BB6C0E2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift in Sources */,

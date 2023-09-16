@@ -42,10 +42,7 @@ final class CompletedTableViewCell: UITableViewCell {
     }
 }
 
-
-
 // MARK: - CellMakeUI
-
 
 private extension CompletedTableViewCell {
     
