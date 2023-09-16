@@ -11,6 +11,13 @@ final class DetailViewController: UIViewController {
     
     private let detailView = DetailView()
     
+    var task: Task? {
+        didSet {
+            
+        }
+    }
+    
+    
     override func loadView() {
         view = detailView
     }

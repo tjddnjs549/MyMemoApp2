@@ -11,6 +11,8 @@ final class TodoViewController: UIViewController {
     
     var dummmy: [String] = ["asd", "asd1", "asd2", "asd3", "asd4", "asd5"]
     
+    
+    let taskManager = CoreDataManager.shared
     // MARK: - properties
     
     private let tableView: UITableView = {
@@ -40,14 +42,16 @@ final class TodoViewController: UIViewController {
 extension TodoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(#function)
-        return dummmy.count
+        return taskManager.getTaskData().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(#function)
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.todoTableViewCell, for: indexPath) as! TodoTableViewCell
-        cell.contentLabel.text = dummmy[indexPath.row]
-        cell.dateLabel.text = dummmy[indexPath.row]
+        
+        let taskList = taskManager.getTaskData()
+        
+        cell.task = taskList[indexPath.row]
         
         
         cell.selectionStyle = .none

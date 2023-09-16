@@ -9,6 +9,14 @@ import UIKit
 
 final class TodoTableViewCell: UITableViewCell {
     
+    
+    var task: Task? {
+        didSet {
+            taskDataSetting()
+        }
+    }
+    
+    
     // MARK: - properties
     
     
@@ -79,6 +87,12 @@ private extension TodoTableViewCell {
             switchButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20),
             switchButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
         ])
+    }
+    
+    func taskDataSetting() {
+        contentLabel.text = task?.title
+        //dateLabel.text = task?.createDate
+        
     }
     
 }
