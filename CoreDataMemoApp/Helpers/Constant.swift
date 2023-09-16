@@ -13,7 +13,7 @@ public enum Font {
     //static let titleFont = UIFont.boldSystemFont(ofSize: 18)
     static let contentLabelFont = UIFont.boldSystemFont(ofSize: 18)
     static let dateLabelFont = UIFont.systemFont(ofSize: 14)
-    static let TextViewFont = UIFont.boldSystemFont(ofSize: 12)
+    static let TextViewFont = UIFont.boldSystemFont(ofSize: 14)
 }
 
 public enum CGColors {

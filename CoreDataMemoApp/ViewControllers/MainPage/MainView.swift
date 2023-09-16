@@ -88,15 +88,15 @@ private extension MainView {
         self.addSubview(homeImage)
         
         NSLayoutConstraint.activate([
-            homeImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            homeImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            homeImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            homeImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             homeImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
             homeImage.bottomAnchor.constraint(equalTo: self.buttonStackView.topAnchor, constant: -20),
             
             buttonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             buttonStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             buttonStackView.topAnchor.constraint(equalTo: homeImage.bottomAnchor, constant: 20),
-            buttonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -300)
+            buttonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -320)
         ])
     }
 }

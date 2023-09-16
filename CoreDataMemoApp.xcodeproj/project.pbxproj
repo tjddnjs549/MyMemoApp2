@@ -26,6 +26,9 @@
 		63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */; };
 		63BB6C142AB596E8007BE767 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */; };
 		63BB6C162AB5982F007BE767 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C152AB5982F007BE767 /* Extension+String.swift */; };
+		63BB6C1D2AB5E582007BE767 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C1C2AB5E582007BE767 /* DetailViewController.swift */; };
+		63BB6C1F2AB5E595007BE767 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C1E2AB5E595007BE767 /* DetailView.swift */; };
+		63BB6C212AB5E6BB007BE767 /* Extension+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */; };
 		63E973E62AB570E600382FAB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63E973E52AB570E600382FAB /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,9 @@
 		63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		63BB6C152AB5982F007BE767 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		63BB6C1C2AB5E582007BE767 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		63BB6C1E2AB5E595007BE767 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextView.swift"; sourceTree = "<group>"; };
 		63E973E52AB570E600382FAB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,7 +97,7 @@
 				63BB6BFA2AB5728D007BE767 /* Managers */,
 				63BB6BF62AB57252007BE767 /* Models */,
 				63BB6BF82AB57263007BE767 /* Views */,
-				63BB6BF92AB5726B007BE767 /* Controllers */,
+				63BB6BF92AB5726B007BE767 /* ViewControllers */,
 				634990C72AB5700C00D4E339 /* Assets.xcassets */,
 				634990C92AB5700C00D4E339 /* LaunchScreen.storyboard */,
 				634990CC2AB5700C00D4E339 /* Info.plist */,
@@ -119,24 +125,22 @@
 		63BB6BF82AB57263007BE767 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				634990C12AB5700B00D4E339 /* Main.storyboard */,
-				63BB6C092AB57F9A007BE767 /* MainView.swift */,
-				63BB6C0B2AB57FB1007BE767 /* MyProfileView.swift */,
-				63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		63BB6BF92AB5726B007BE767 /* Controllers */ = {
+		63BB6BF92AB5726B007BE767 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				634990C12AB5700B00D4E339 /* Main.storyboard */,
 				634990BF2AB5700B00D4E339 /* TabbarViewController.swift */,
-				63BB6BFC2AB5744C007BE767 /* MainViewController.swift */,
-				63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */,
-				63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */,
-				63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */,
+				63BB6C1B2AB5E45D007BE767 /* MyProfilePage */,
+				63BB6C1A2AB5E433007BE767 /* CompletedPage */,
+				63BB6C192AB5E429007BE767 /* DetailPage */,
+				63BB6C182AB5E41E007BE767 /* TodoPage */,
+				63BB6C172AB5E415007BE767 /* MainPage */,
 			);
-			path = Controllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		63BB6BFA2AB5728D007BE767 /* Managers */ = {
@@ -153,6 +157,7 @@
 				63BB6C052AB577D7007BE767 /* Extension+Label.swift */,
 				63BB6C0D2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift */,
 				63BB6C152AB5982F007BE767 /* Extension+String.swift */,
+				63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -163,6 +168,50 @@
 				63BB6C012AB575CC007BE767 /* Constant.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		63BB6C172AB5E415007BE767 /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				63BB6BFC2AB5744C007BE767 /* MainViewController.swift */,
+				63BB6C092AB57F9A007BE767 /* MainView.swift */,
+			);
+			path = MainPage;
+			sourceTree = "<group>";
+		};
+		63BB6C182AB5E41E007BE767 /* TodoPage */ = {
+			isa = PBXGroup;
+			children = (
+				63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */,
+				63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */,
+			);
+			path = TodoPage;
+			sourceTree = "<group>";
+		};
+		63BB6C192AB5E429007BE767 /* DetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				63BB6C1C2AB5E582007BE767 /* DetailViewController.swift */,
+				63BB6C1E2AB5E595007BE767 /* DetailView.swift */,
+			);
+			path = DetailPage;
+			sourceTree = "<group>";
+		};
+		63BB6C1A2AB5E433007BE767 /* CompletedPage */ = {
+			isa = PBXGroup;
+			children = (
+				63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */,
+			);
+			path = CompletedPage;
+			sourceTree = "<group>";
+		};
+		63BB6C1B2AB5E45D007BE767 /* MyProfilePage */ = {
+			isa = PBXGroup;
+			children = (
+				63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */,
+				63BB6C0B2AB57FB1007BE767 /* MyProfileView.swift */,
+			);
+			path = MyProfilePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,8 +287,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				63BB6C162AB5982F007BE767 /* Extension+String.swift in Sources */,
+				63BB6C1F2AB5E595007BE767 /* DetailView.swift in Sources */,
+				63BB6C1D2AB5E582007BE767 /* DetailViewController.swift in Sources */,
 				63BB6C022AB575CC007BE767 /* Constant.swift in Sources */,
 				63BB6C062AB577D7007BE767 /* Extension+Label.swift in Sources */,
+				63BB6C212AB5E6BB007BE767 /* Extension+UITextView.swift in Sources */,
 				63BB6C0C2AB57FB1007BE767 /* MyProfileView.swift in Sources */,
 				63BB6C142AB596E8007BE767 /* TodoTableViewCell.swift in Sources */,
 				63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */,

@@ -47,7 +47,7 @@ extension TodoViewController: UITableViewDataSource {
         print(#function)
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.todoTableViewCell, for: indexPath) as! TodoTableViewCell
         cell.contentLabel.text = dummmy[indexPath.row]
-        
+        cell.dateLabel.text = dummmy[indexPath.row]
         
         
         cell.selectionStyle = .none
@@ -117,7 +117,8 @@ private extension TodoViewController {
 private extension TodoViewController {
     
     @objc func plusButtonTapped() {
-        
+        let detailVC = DetailViewController()
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }
