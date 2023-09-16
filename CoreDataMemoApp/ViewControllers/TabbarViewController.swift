@@ -7,7 +7,7 @@
 import UIKit
 
 
-class TabbarViewController: UITabBarController {
+final class TabbarViewController: UITabBarController {
     
     enum TabBarMenu: Int {
         case Main = 0
@@ -38,12 +38,13 @@ class TabbarViewController: UITabBarController {
         self.tabBar.items![0].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
         self.tabBar.items![0].image = UIImage(systemName: "house.circle")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.black).resized(to: CGSize(width: 36, height: 36))
         self.tabBar.items![0].selectedImage = UIImage(systemName: "house.circle.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.orange).resized(to: CGSize(width: 36, height: 36))
+        self.tabBar.items![0].title = "Main"
         
         // MyProfile
         self.tabBar.items![1].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
         self.tabBar.items![1].image = UIImage(systemName: "person.crop.circle")?.withRenderingMode(.alwaysOriginal).resized(to: CGSize(width: 36, height: 36))
         self.tabBar.items![1].selectedImage = UIImage(systemName: "person.crop.circle.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.orange).resized(to: CGSize(width: 36, height: 36))
-        
+        self.tabBar.items![1].title = "Profile"
     }
 }
 

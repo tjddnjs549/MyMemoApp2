@@ -9,7 +9,7 @@ import UIKit
 
 final class DetailView: UIView {
     
-    var contentTextView: UITextView = {
+    lazy var contentTextView: UITextView = {
         let content = UITextView()
         content.makeUITextView(backgroundColor: UIColors.white, text: "내용을 입력해주세요", font: Font.TextViewFont, borderWidth: 1.0, cornerRadius: 8, borderColor: CGColors.orange)
         return content
@@ -37,7 +37,7 @@ final class DetailView: UIView {
     private let modifiedDateLabel: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
-        label.text = "수정 등록: "
+        label.text = "   수정 등록:"
         return label
     }()
     
@@ -48,22 +48,26 @@ final class DetailView: UIView {
         return label
     }()
     
+    private let nilLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
     
     private lazy var firstDateStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [firstDateLabel, firstDate])
+        let stack = UIStackView(arrangedSubviews: [firstDateLabel, firstDate, nilLabel])
         stack.spacing = 10
         stack.axis = .horizontal
-        stack.distribution = .fill
+        stack.distribution = .fillProportionally
         stack.alignment = .fill
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
     private lazy var modifiedDateStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [modifiedDateLabel, modifiedDate])
+        let stack = UIStackView(arrangedSubviews: [modifiedDateLabel, modifiedDate, nilLabel])
         stack.spacing = 10
         stack.axis = .horizontal
-        stack.distribution = .fill
+        stack.distribution = .fillProportionally
         stack.alignment = .fill
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -71,6 +75,16 @@ final class DetailView: UIView {
     
     private lazy var DateStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [firstDateStackView, modifiedDateStackView])
+        stack.spacing = 10
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var allStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [contentTextView, segmentedControl, DateStackView])
         stack.spacing = 20
         stack.axis = .vertical
         stack.distribution = .fill
@@ -79,17 +93,7 @@ final class DetailView: UIView {
         return stack
     }()
     
-    private lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [contentTextView, segmentedControl])
-        stack.spacing = 20
-        stack.axis = .vertical
-        stack.distribution = .fill
-        stack.alignment = .fill
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    var stackViewTopConstraint: NSLayoutConstraint!
+    var allStackViewTopConstraint: NSLayoutConstraint!
     
     
     override init(frame: CGRect) {
@@ -125,14 +129,14 @@ extension DetailView {
     
     
     @objc func moveUpAction() {
-        stackViewTopConstraint.constant = 10
+        allStackViewTopConstraint.constant = 10
         UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
         }
     }
     
     @objc func moveDownAction() {
-        stackViewTopConstraint.constant = 40
+        allStackViewTopConstraint.constant = 40
         UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
         }
@@ -156,16 +160,16 @@ private extension DetailView {
     }
 
     func stackViewMakeUI() {
-        self.addSubview(stackView)
+        self.addSubview(allStackView)
         
-        stackViewTopConstraint = stackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60)
+        allStackViewTopConstraint = allStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60)
         
         NSLayoutConstraint.activate([
             contentTextView.heightAnchor.constraint(equalToConstant: 240),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            stackViewTopConstraint,
-            stackView.heightAnchor.constraint(equalToConstant: 290)
+            allStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            allStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            allStackViewTopConstraint,
+            allStackView.heightAnchor.constraint(equalToConstant: 350)
         ])
         
     }
