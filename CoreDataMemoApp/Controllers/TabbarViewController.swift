@@ -35,16 +35,14 @@ class TabbarViewController: UITabBarController {
         self.tabBar.tintColor = UIColors.orange
         
         // Main
-        self.tabBar.items![0].imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        self.tabBar.items![0].image = UIImage(systemName: "house")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.black)
-        self.tabBar.items![0].selectedImage = UIImage(systemName: "house.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.orange)
-        self.tabBar.items![0].title = "홈"
+        self.tabBar.items![0].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
+        self.tabBar.items![0].image = UIImage(systemName: "house.circle")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.black).resized(to: CGSize(width: 36, height: 36))
+        self.tabBar.items![0].selectedImage = UIImage(systemName: "house.circle.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.orange).resized(to: CGSize(width: 36, height: 36))
         
         // MyProfile
-        self.tabBar.items![1].imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        self.tabBar.items![1].image = UIImage(systemName: "person.crop.circle")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items![1].selectedImage = UIImage(systemName: "person.crop.circle.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.orange)
-        self.tabBar.items![1].title = "프로필"
+        self.tabBar.items![1].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
+        self.tabBar.items![1].image = UIImage(systemName: "person.crop.circle")?.withRenderingMode(.alwaysOriginal).resized(to: CGSize(width: 36, height: 36))
+        self.tabBar.items![1].selectedImage = UIImage(systemName: "person.crop.circle.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.orange).resized(to: CGSize(width: 36, height: 36))
         
     }
 }

@@ -3,18 +3,26 @@
 //  CoreDataMemoApp
 //
 //  Created by 박성원 on 2023/09/16.
-//
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
+    private let mainView = MainView()
+    
+    override func loadView() {
+        view = mainView
     }
     
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNaviBar()
+    }
+    
+    private func setupNaviBar() {
+        self.title = "Main"
+        mainView.navigationController = self.navigationController!
+    }
 
 
 }

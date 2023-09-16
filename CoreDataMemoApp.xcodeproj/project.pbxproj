@@ -22,6 +22,8 @@
 		63BB6C0A2AB57F9A007BE767 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C092AB57F9A007BE767 /* MainView.swift */; };
 		63BB6C0C2AB57FB1007BE767 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C0B2AB57FB1007BE767 /* MyProfileView.swift */; };
 		63BB6C0E2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C0D2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift */; };
+		63BB6C102AB58BB8007BE767 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */; };
+		63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */; };
 		63E973E62AB570E600382FAB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63E973E52AB570E600382FAB /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		63BB6C092AB57F9A007BE767 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		63BB6C0B2AB57FB1007BE767 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		63BB6C0D2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage,UIImageView.swift"; sourceTree = "<group>"; };
+		63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		63E973E52AB570E600382FAB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +128,8 @@
 				634990BF2AB5700B00D4E339 /* TabbarViewController.swift */,
 				63BB6BFC2AB5744C007BE767 /* MainViewController.swift */,
 				63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */,
+				63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */,
+				63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,11 +237,13 @@
 				63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */,
 				63BB6C0A2AB57F9A007BE767 /* MainView.swift in Sources */,
 				634990C02AB5700B00D4E339 /* TabbarViewController.swift in Sources */,
+				63BB6C102AB58BB8007BE767 /* TodoViewController.swift in Sources */,
 				634990BC2AB5700B00D4E339 /* AppDelegate.swift in Sources */,
 				634990C62AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld in Sources */,
 				63BB6C042AB577B9007BE767 /* Extension+Button.swift in Sources */,
 				634990BE2AB5700B00D4E339 /* SceneDelegate.swift in Sources */,
 				63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */,
+				63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */,
 				63BB6C0E2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

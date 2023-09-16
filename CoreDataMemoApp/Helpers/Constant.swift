@@ -26,3 +26,8 @@ public enum UIColors {
     static let orange = UIColor.systemOrange
     static let black = UIColor.black
 }
+
+
+public enum Url {
+    static let imageUrl: String = "https://spartacodingclub.kr/css/images/scc-og.jpg"
+}
