@@ -24,6 +24,7 @@
 		63BB6C0E2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C0D2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift */; };
 		63BB6C102AB58BB8007BE767 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */; };
 		63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */; };
+		63BB6C142AB596E8007BE767 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */; };
 		63E973E62AB570E600382FAB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63E973E52AB570E600382FAB /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		63BB6C0D2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage,UIImageView.swift"; sourceTree = "<group>"; };
 		63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
+		63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		63E973E52AB570E600382FAB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				634990C12AB5700B00D4E339 /* Main.storyboard */,
 				63BB6C092AB57F9A007BE767 /* MainView.swift */,
 				63BB6C0B2AB57FB1007BE767 /* MyProfileView.swift */,
+				63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				63BB6C022AB575CC007BE767 /* Constant.swift in Sources */,
 				63BB6C062AB577D7007BE767 /* Extension+Label.swift in Sources */,
 				63BB6C0C2AB57FB1007BE767 /* MyProfileView.swift in Sources */,
+				63BB6C142AB596E8007BE767 /* TodoTableViewCell.swift in Sources */,
 				63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */,
 				63BB6C0A2AB57F9A007BE767 /* MainView.swift in Sources */,
 				634990C02AB5700B00D4E339 /* TabbarViewController.swift in Sources */,

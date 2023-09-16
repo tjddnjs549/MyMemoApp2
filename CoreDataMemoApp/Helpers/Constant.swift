@@ -25,6 +25,8 @@ public enum CGColors {
 public enum UIColors {
     static let orange = UIColor.systemOrange
     static let black = UIColor.black
+    static let white = UIColor.white
+    static let clear = UIColor.clear
 }
 
 
