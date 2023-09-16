@@ -96,7 +96,7 @@ private extension MainView {
             buttonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             buttonStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             buttonStackView.topAnchor.constraint(equalTo: homeImage.bottomAnchor, constant: 20),
-            buttonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -320)
+            buttonStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -340)
         ])
     }
 }

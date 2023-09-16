@@ -109,6 +109,10 @@ private extension TodoViewController {
         
         let plusButton = UIBarButtonItem(title: "추가", style: .done, target: self, action: #selector(plusButtonTapped))
         navigationItem.rightBarButtonItem = plusButton
+        
+        let backButton = UIBarButtonItem(title: "뒤로", style: .done, target: self, action: #selector(backButtonTapped))
+        
+        self.navigationItem.leftBarButtonItem = backButton
     }
 }
 
@@ -119,6 +123,10 @@ private extension TodoViewController {
     @objc func plusButtonTapped() {
         let detailVC = DetailViewController()
         self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    @objc func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
