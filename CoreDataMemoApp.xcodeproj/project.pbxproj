@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		634990BC2AB5700B00D4E339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634990BB2AB5700B00D4E339 /* AppDelegate.swift */; };
 		634990BE2AB5700B00D4E339 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634990BD2AB5700B00D4E339 /* SceneDelegate.swift */; };
-		634990C02AB5700B00D4E339 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634990BF2AB5700B00D4E339 /* ViewController.swift */; };
+		634990C02AB5700B00D4E339 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634990BF2AB5700B00D4E339 /* TabbarViewController.swift */; };
 		634990C32AB5700B00D4E339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634990C12AB5700B00D4E339 /* Main.storyboard */; };
 		634990C62AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 634990C42AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld */; };
 		634990C82AB5700C00D4E339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 634990C72AB5700C00D4E339 /* Assets.xcassets */; };
 		634990CB2AB5700C00D4E339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634990C92AB5700C00D4E339 /* LaunchScreen.storyboard */; };
+		63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6BFC2AB5744C007BE767 /* MainViewController.swift */; };
+		63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */; };
+		63BB6C022AB575CC007BE767 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C012AB575CC007BE767 /* Constant.swift */; };
+		63BB6C042AB577B9007BE767 /* Extension+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C032AB577B9007BE767 /* Extension+Button.swift */; };
+		63BB6C062AB577D7007BE767 /* Extension+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C052AB577D7007BE767 /* Extension+Label.swift */; };
 		63E973E62AB570E600382FAB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63E973E52AB570E600382FAB /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +26,17 @@
 		634990B82AB5700B00D4E339 /* CoreDataMemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataMemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		634990BB2AB5700B00D4E339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		634990BD2AB5700B00D4E339 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		634990BF2AB5700B00D4E339 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		634990BF2AB5700B00D4E339 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		634990C22AB5700B00D4E339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		634990C52AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataMemoApp.xcdatamodel; sourceTree = "<group>"; };
 		634990C72AB5700C00D4E339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		634990CA2AB5700C00D4E339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		634990CC2AB5700C00D4E339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63BB6BFC2AB5744C007BE767 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		63BB6C012AB575CC007BE767 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		63BB6C032AB577B9007BE767 /* Extension+Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Button.swift"; sourceTree = "<group>"; };
+		63BB6C052AB577D7007BE767 /* Extension+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Label.swift"; sourceTree = "<group>"; };
 		63E973E52AB570E600382FAB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,16 +71,77 @@
 		634990BA2AB5700B00D4E339 /* CoreDataMemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				634990BB2AB5700B00D4E339 /* AppDelegate.swift */,
-				634990BD2AB5700B00D4E339 /* SceneDelegate.swift */,
-				634990BF2AB5700B00D4E339 /* ViewController.swift */,
-				634990C12AB5700B00D4E339 /* Main.storyboard */,
+				63BB6BF72AB5725A007BE767 /* Applications */,
+				63BB6C002AB575B0007BE767 /* Helpers */,
+				63BB6BFB2AB572BA007BE767 /* Extensions */,
+				63BB6BFA2AB5728D007BE767 /* Managers */,
+				63BB6BF62AB57252007BE767 /* Models */,
+				63BB6BF82AB57263007BE767 /* Views */,
+				63BB6BF92AB5726B007BE767 /* Controllers */,
 				634990C72AB5700C00D4E339 /* Assets.xcassets */,
 				634990C92AB5700C00D4E339 /* LaunchScreen.storyboard */,
 				634990CC2AB5700C00D4E339 /* Info.plist */,
 				634990C42AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld */,
 			);
 			path = CoreDataMemoApp;
+			sourceTree = "<group>";
+		};
+		63BB6BF62AB57252007BE767 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		63BB6BF72AB5725A007BE767 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				634990BB2AB5700B00D4E339 /* AppDelegate.swift */,
+				634990BD2AB5700B00D4E339 /* SceneDelegate.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		63BB6BF82AB57263007BE767 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				634990C12AB5700B00D4E339 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		63BB6BF92AB5726B007BE767 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				634990BF2AB5700B00D4E339 /* TabbarViewController.swift */,
+				63BB6BFC2AB5744C007BE767 /* MainViewController.swift */,
+				63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		63BB6BFA2AB5728D007BE767 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		63BB6BFB2AB572BA007BE767 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				63BB6C032AB577B9007BE767 /* Extension+Button.swift */,
+				63BB6C052AB577D7007BE767 /* Extension+Label.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		63BB6C002AB575B0007BE767 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				63BB6C012AB575CC007BE767 /* Constant.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,10 +216,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				634990C02AB5700B00D4E339 /* ViewController.swift in Sources */,
+				63BB6C022AB575CC007BE767 /* Constant.swift in Sources */,
+				63BB6C062AB577D7007BE767 /* Extension+Label.swift in Sources */,
+				63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */,
+				634990C02AB5700B00D4E339 /* TabbarViewController.swift in Sources */,
 				634990BC2AB5700B00D4E339 /* AppDelegate.swift in Sources */,
 				634990C62AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld in Sources */,
+				63BB6C042AB577B9007BE767 /* Extension+Button.swift in Sources */,
 				634990BE2AB5700B00D4E339 /* SceneDelegate.swift in Sources */,
+				63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
