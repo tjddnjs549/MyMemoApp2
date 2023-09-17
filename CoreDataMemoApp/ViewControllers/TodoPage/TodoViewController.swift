@@ -8,10 +8,7 @@
 import UIKit
 
 final class TodoViewController: UIViewController {
-    
-    var dummmy: [String] = ["asd", "asd1", "asd2", "asd3", "asd4", "asd5"]
-    
-    
+
     let taskManager = CoreDataManager.shared
     // MARK: - properties
     
@@ -20,7 +17,6 @@ final class TodoViewController: UIViewController {
         tbView.translatesAutoresizingMaskIntoConstraints = false
         return tbView
     }()
-    
     
     // MARK: - view lifecycle
     
@@ -53,7 +49,6 @@ extension TodoViewController: UITableViewDataSource {
         
         cell.task = taskList[indexPath.row]
         
-        
         cell.selectionStyle = .none
         return cell
     }
@@ -64,11 +59,13 @@ extension TodoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let detailVC = DetailViewController()
+        detailVC.task = taskManager.getTaskData()[indexPath.row]
+        
+        navigationController?.pushViewController(detailVC, animated: true)
         
     }
 }
-
-
 
 // MARK: - viewSetting
 

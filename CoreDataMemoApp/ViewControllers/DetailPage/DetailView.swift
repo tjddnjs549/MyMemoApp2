@@ -27,10 +27,10 @@ final class DetailView: UIView {
     private let firstDateLabel: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
-        label.text = "최초 등록:"
+        label.text = "최초:"
         return label
     }()
-    private let firstDate: UILabel = {
+    lazy var firstDate: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
         label.text = "2023년 9월 20일 18:18"
@@ -40,11 +40,11 @@ final class DetailView: UIView {
     private let modifiedDateLabel: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
-        label.text = "   수정 등록:"
+        label.text = "   수정:"
         return label
     }()
     
-    private var modifiedDate: UILabel = {
+    lazy var modifiedDate: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
         label.text = "2023년 9월 20일 18:18"

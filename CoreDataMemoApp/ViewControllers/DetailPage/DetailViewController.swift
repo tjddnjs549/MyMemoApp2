@@ -9,14 +9,22 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
+    // MARK: - properties
+
     private let detailView = DetailView()
+    let taskManager = CoreDataManager.shared
+    
     
     var task: Task? {
         didSet {
-            
+            detailView.contentTextView.text = task?.title
+            detailView.firstDate.text = task?.createDateString
+            detailView.modifiedDate.text = task?.modifyDateString
         }
     }
     
+    
+    // MARK: - view LifeCycle
     
     override func loadView() {
         view = detailView
@@ -26,9 +34,16 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         naviBarSetting()
     }
-
     
-    private func naviBarSetting() {
+
+}
+
+
+// MARK: - viewMakeUI
+
+private extension DetailViewController {
+    
+    func naviBarSetting() {
         self.title = "추가"
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColors.clear
@@ -40,10 +55,25 @@ final class DetailViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = backButton
         
     }
+}
+
+// MARK: - @objc func
+
+extension DetailViewController {
     
     @objc func backButtonTapped() {
+        if let task = self.task {
+            task.title = detailView.contentTextView.text
+            task.modifyDate = Date()
+            taskManager.updateTaskData(newTaskData: task) {
+                print(task.modifyDateString)
+            }
+        } else {
+            let title = detailView.contentTextView.text
+            taskManager.saveTaskData(content: title, modifyDate: Date()) {
+                
+            }
+        }
         self.navigationController?.popViewController(animated: true)
     }
 }
-
-

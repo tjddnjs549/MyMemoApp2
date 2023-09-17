@@ -91,8 +91,7 @@ private extension TodoTableViewCell {
     
     func taskDataSetting() {
         contentLabel.text = task?.title
-        //dateLabel.text = task?.createDate
-        
+        dateLabel.text = task?.createDateString
     }
     
 }
