@@ -8,7 +8,7 @@
 import UIKit
 
 final class TodoViewController: UIViewController {
-
+    
     let taskManager = CoreDataManager.shared
     // MARK: - properties
     
@@ -23,6 +23,7 @@ final class TodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewMakeUI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,12 +38,10 @@ final class TodoViewController: UIViewController {
 
 extension TodoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(#function)
         return taskManager.getTaskData().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.todoTableViewCell, for: indexPath) as! TodoTableViewCell
         
         let taskList = taskManager.getTaskData()
@@ -64,6 +63,34 @@ extension TodoViewController: UITableViewDelegate {
         
         navigationController?.pushViewController(detailVC, animated: true)
         
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        UIView.animate(withDuration: 0.3) {
+            guard velocity.y != 0 else { return }
+            if velocity.y < 0 {
+                let height = self.tabBarController?.tabBar.frame.height ?? 0.0
+                self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - height)
+            } else {
+                self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
+            self.taskManager.deleteTaskData(data: self.taskManager.getTaskData()[indexPath.row]) {
+                self.tableView.reloadData()
+            }
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = UIColors.orange
+        deleteAction.image = UIImage(systemName: "trash.circle")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        return configuration
     }
 }
 
@@ -112,8 +139,7 @@ private extension TodoViewController {
         navigationItem.rightBarButtonItem = plusButton
         
         let backButton = UIBarButtonItem(title: "뒤로", style: .done, target: self, action: #selector(backButtonTapped))
-        
-        self.navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem = backButton
     }
 }
 

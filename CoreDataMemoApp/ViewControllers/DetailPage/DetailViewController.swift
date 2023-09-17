@@ -66,12 +66,10 @@ extension DetailViewController {
             task.title = detailView.contentTextView.text
             task.modifyDate = Date()
             taskManager.updateTaskData(newTaskData: task) {
-                print(task.modifyDateString)
             }
         } else {
             let title = detailView.contentTextView.text
             taskManager.saveTaskData(content: title, modifyDate: Date()) {
-                
             }
         }
         self.navigationController?.popViewController(animated: true)

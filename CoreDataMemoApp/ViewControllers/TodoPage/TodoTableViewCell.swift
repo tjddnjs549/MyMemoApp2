@@ -9,6 +9,7 @@ import UIKit
 
 final class TodoTableViewCell: UITableViewCell {
     
+    let taskManeger = CoreDataManager.shared
     
     var task: Task? {
         didSet {
@@ -104,18 +105,25 @@ private extension TodoTableViewCell {
 
 private extension TodoTableViewCell {
     @objc func onClickSwitch(sender: Any) {
-        //guard let todo else { return }
+        
+        guard let task = self.task else { return }
         if switchButton.isOn {
             contentLabel.textColor = UIColors.lightGray
             dateLabel.textColor = UIColors.lightGray
-            //contentLabel.attributedText = todo.content?.strikeThrough()
-            //TodoManager.completedTodo(todo: todo, isCompleted: true)
+            contentLabel.attributedText = task.title?.strikeThrough()
+            task.isCompleted = true
+            taskManeger.updateTaskData(newTaskData: task) {
+                print("누름")
+            }
         } else {
             contentLabel.textColor = UIColors.black
             dateLabel.textColor = UIColors.black
-            //contentLabel.attributedText = nil
-            //contentLabel.text = todo.content
-            //TodoManager.completedTodo(todo: todo, isCompleted: false)
+            contentLabel.attributedText = nil
+            contentLabel.text = task.title
+            task.isCompleted = false
+            taskManeger.updateTaskData(newTaskData: task) {
+                print("누름")
+            }
         }
     }
 }
