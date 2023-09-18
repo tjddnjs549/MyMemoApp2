@@ -21,6 +21,7 @@ final class MainViewController: UIViewController {
     
     private func setupNaviBar() {
         self.title = "Main"
+        
         mainView.navigationController = self.navigationController!
     }
 

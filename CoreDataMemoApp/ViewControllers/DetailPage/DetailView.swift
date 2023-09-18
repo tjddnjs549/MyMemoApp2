@@ -155,19 +155,15 @@ extension DetailView {
         case 0:
             selectedCategory = "None"
             categoryManager.createCategory(title: selectedCategory!)
-            categoryManager.getCategory()
         case 1:
             selectedCategory = "Work"
             categoryManager.createCategory(title: selectedCategory!)
-            categoryManager.getCategory()
         case 2:
             selectedCategory = "Life"
             categoryManager.createCategory(title: selectedCategory!)
-            categoryManager.getCategory()
         default:
             selectedCategory = "None"
             categoryManager.createCategory(title: selectedCategory!)
-            categoryManager.getCategory()
         }
     }
     

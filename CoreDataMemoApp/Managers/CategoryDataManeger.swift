@@ -41,6 +41,7 @@ class CategoryDataManager {
         do {
             try context.save()
             print("createCategory")
+            print("newCategory : \(newCategory)")
         } catch {
             print("Create ERROR: \(error.localizedDescription)")
         }

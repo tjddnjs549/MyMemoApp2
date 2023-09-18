@@ -45,6 +45,7 @@ private extension DetailViewController {
     
     func naviBarSetting() {
         self.title = "추가"
+        
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColors.clear
         appearance.shadowColor = .none

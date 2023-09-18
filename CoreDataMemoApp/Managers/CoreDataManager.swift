@@ -59,20 +59,20 @@ final class CoreDataManager {
     
     
     // MARK: - [Create] 코어데이터에 데이터 생성하기
-    func saveTaskData(content: String?, modifyDate: Date?,isCompleted: Bool ,completion: @escaping () -> Void) {
+    func saveTaskData(content: String?, modifyDate: Date?, isCompleted: Bool, completion: @escaping () -> Void) {
         
         if let context = context {
             
             if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
                 
                 let taskData = Task(entity: entity, insertInto: context)
-                    
-                    taskData.id = UUID()
-                    taskData.title = content
-                    taskData.createDate = Date()
-                    taskData.modifyDate = modifyDate
-                    taskData.isCompleted = isCompleted
-                    appDelegate?.saveContext()
+                
+                taskData.id = UUID()
+                taskData.title = content
+                taskData.createDate = Date()
+                taskData.modifyDate = modifyDate
+                taskData.isCompleted = isCompleted
+                appDelegate?.saveContext()
             }
             completion()
         }
