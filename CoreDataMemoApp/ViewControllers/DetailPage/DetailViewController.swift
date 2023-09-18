@@ -69,7 +69,7 @@ extension DetailViewController {
             }
         } else {
             let title = detailView.contentTextView.text
-            taskManager.saveTaskData(content: title, modifyDate: Date()) {
+            taskManager.saveTaskData(content: title, modifyDate: Date(), isCompleted: false) {
             }
         }
         self.navigationController?.popViewController(animated: true)

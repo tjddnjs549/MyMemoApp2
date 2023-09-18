@@ -36,8 +36,8 @@ final class CoreDataManager {
             
             let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
             
-            let idOrder = NSSortDescriptor(key: "id", ascending: false)
-            request.sortDescriptors = [idOrder]
+            let dateOrder = NSSortDescriptor(key: "id", ascending: false)
+            request.sortDescriptors = [dateOrder]
             
             do {
                 if let fetchedTaskList = try context.fetch(request) as? [Task] {
@@ -59,22 +59,20 @@ final class CoreDataManager {
     
     
     // MARK: - [Create] 코어데이터에 데이터 생성하기
-    func saveTaskData(content: String?, modifyDate: Date?, completion: @escaping () -> Void) {
+    func saveTaskData(content: String?, modifyDate: Date?,isCompleted: Bool ,completion: @escaping () -> Void) {
         
         if let context = context {
             
             if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
                 
-                if let taskData = NSManagedObject(entity: entity, insertInto: context) as? Task {
+                let taskData = Task(entity: entity, insertInto: context)
                     
                     taskData.id = UUID()
                     taskData.title = content
                     taskData.createDate = Date()
                     taskData.modifyDate = modifyDate
-                    taskData.isCompleted = false
+                    taskData.isCompleted = isCompleted
                     appDelegate?.saveContext()
-                    
-                }
             }
             completion()
         }
@@ -82,70 +80,53 @@ final class CoreDataManager {
     
     // MARK: - [Delete] 코어데이터에서 데이터 삭제하기 (일치하는 데이터 찾아서 ===> 삭제)
     func deleteTaskData(data: Task, completion: @escaping () -> Void) {
-        guard let id = data.id else {
-            completion()
-            return
-        }
+        guard let id = data.id else { return }
         if let context = context {
-            
             let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
             request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
-            
             do {
-                if let fetchedTaskList = try context.fetch(request) as? [Task] {
-                    if let targetTask = fetchedTaskList.first {
-                        context.delete(targetTask)
-                        if context.hasChanges {
-                            do {
-                                try context.save()
-                                completion()
-                            } catch {
-                                print(error.localizedDescription)
-                                completion()
-                            }
-                        }
-                    }
+                let fetchedTaskList = try context.fetch(request)
+                if let targetTask = fetchedTaskList.first {
+                    context.delete(targetTask)
+                    appDelegate?.saveContext()
                 }
                 completion()
             } catch {
                 print("Delete ERROR: \(error.localizedDescription)")
-                completion()
             }
         }
     }
     // MARK: - [Update] 코어데이터에서 데이터 수정하기 (일치하는 데이터 찾아서 ===> 수정)
     func updateTaskData(newTaskData: Task, completion: @escaping () -> Void) {
-        guard let id = newTaskData.id else {
-            return
-        }
-        
+        guard let id = newTaskData.id else { return }
         if let context = context {
             let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
             request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
-            
             do {
-                if let fetchedTaskList = try context.fetch(request) as? [Task] {
-                    if var targetTask = fetchedTaskList.first {
-                        if context.hasChanges {
-                            do {
-                                let fetchedTask = try context.fetch(request)
-                                if var targetSnack = fetchedTask.first {
-                                    targetSnack = newTaskData
-                                    appDelegate?.saveContext()
-                                }
-                                completion()
-                            } catch {
-                                print(error.localizedDescription)
-                                completion()
-                            }
-                        }
-                    }
+                let fetchedTask = try context.fetch(request)
+                if var targetTask = fetchedTask.first {
+                    targetTask = newTaskData
+                    appDelegate?.saveContext()
                 }
                 completion()
             } catch {
                 print("Update ERROR: \(error.localizedDescription)")
-                completion()
             }
         }
+    }
+    
+    func completedTask(newTask: Task, isCompleted: Bool) {
+        var task = getTaskData()
+        for index in 0..<task.count {
+            if task[index].id == newTask.id {
+                task[index].isCompleted = isCompleted
+            }
+        }
+        updateTaskData(newTaskData: newTask) {
+        }
+    }
+    
+    func filterCategory(category: Category) -> [Task] {
+        return getTaskData().filter { $0.category == category }
     }
 }

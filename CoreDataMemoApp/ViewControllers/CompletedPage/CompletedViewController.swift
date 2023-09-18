@@ -63,7 +63,7 @@ extension CompletedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.task = taskManager.getTaskData()[indexPath.row]
+        detailVC.task = taskManager.filterIsCompleted()[indexPath.row]
         
         navigationController?.pushViewController(detailVC, animated: true)
     }

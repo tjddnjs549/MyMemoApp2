@@ -23,7 +23,6 @@ final class TodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewMakeUI()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,9 +43,13 @@ extension TodoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.todoTableViewCell, for: indexPath) as! TodoTableViewCell
         
-        let taskList = taskManager.getTaskData()
+        let taskList = taskManager.getTaskData().sorted { $0.createDate! > $1.createDate! }
         
-        cell.task = taskList[indexPath.row]
+        let task = taskList[indexPath.row]
+        
+        cell.task = task
+        
+        cell.setSwitchOn(task.isCompleted)
         
         cell.selectionStyle = .none
         return cell
@@ -59,7 +62,7 @@ extension TodoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailVC = DetailViewController()
-        detailVC.task = taskManager.getTaskData()[indexPath.row]
+        detailVC.task = taskManager.getTaskData().sorted { $0.createDate! > $1.createDate! }[indexPath.row]
         
         navigationController?.pushViewController(detailVC, animated: true)
         
@@ -92,6 +95,10 @@ extension TodoViewController: UITableViewDelegate {
         
         return configuration
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 // MARK: - viewSetting
@@ -101,8 +108,8 @@ private extension TodoViewController {
     
     func viewMakeUI() {
         view.backgroundColor = UIColors.clear
-        naviBarSetting()
         tableViewSetting()
+        naviBarSetting()
         tableViewMakeUI()
     }
     

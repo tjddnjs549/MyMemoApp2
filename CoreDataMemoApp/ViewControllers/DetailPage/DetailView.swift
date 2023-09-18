@@ -9,8 +9,8 @@ import UIKit
 
 final class DetailView: UIView {
     
-
-    
+    let categoryManager = CategoryDataManager.shared
+    var selectedCategory: String? = "None"
     
     lazy var contentTextView: UITextView = {
         let content = UITextView()
@@ -20,6 +20,7 @@ final class DetailView: UIView {
     
     private let segmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["none", "work", "life"])
+        control.addTarget(self, action: #selector(segmentChanged(sender:)), for: .valueChanged)
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
     }()
@@ -147,7 +148,27 @@ extension DetailView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.endEditing(true)
-        
+    }
+    
+    @objc func segmentChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            selectedCategory = "None"
+            categoryManager.createCategory(title: selectedCategory!)
+            categoryManager.getCategory()
+        case 1:
+            selectedCategory = "Work"
+            categoryManager.createCategory(title: selectedCategory!)
+            categoryManager.getCategory()
+        case 2:
+            selectedCategory = "Life"
+            categoryManager.createCategory(title: selectedCategory!)
+            categoryManager.getCategory()
+        default:
+            selectedCategory = "None"
+            categoryManager.createCategory(title: selectedCategory!)
+            categoryManager.getCategory()
+        }
     }
     
 }

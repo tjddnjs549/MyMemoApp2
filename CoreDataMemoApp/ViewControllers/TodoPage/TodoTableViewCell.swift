@@ -10,7 +10,7 @@ import UIKit
 final class TodoTableViewCell: UITableViewCell {
     
     let taskManeger = CoreDataManager.shared
-    
+    private var isSwitchOn: Bool = false // 스위치 상태를 저장할 프로퍼티 추가
     var task: Task? {
         didSet {
             taskDataSetting()
@@ -33,13 +33,13 @@ final class TodoTableViewCell: UITableViewCell {
         return date
     }()
     
-    private lazy var switchButton: UISwitch = {
+    lazy var switchButton: UISwitch = {
         let switchBtn = UISwitch()
         switchBtn.tintColor = UIColors.orange
         switchBtn.layer.cornerRadius = switchBtn.frame.height / 2.0
         switchBtn.isOn = false // 초기값
         switchBtn.translatesAutoresizingMaskIntoConstraints = false
-        switchBtn.addTarget(self, action: #selector(onClickSwitch(sender: )), for: UIControl.Event.valueChanged)
+        switchBtn.addTarget(self, action: #selector(onClickSwitch(sender: )), for: .valueChanged)
         return switchBtn
     }()
     
@@ -93,6 +93,7 @@ private extension TodoTableViewCell {
     func taskDataSetting() {
         contentLabel.text = task?.title
         dateLabel.text = task?.createDateString
+        setSwitchOn(task!.isCompleted)
     }
     
 }
@@ -103,27 +104,36 @@ private extension TodoTableViewCell {
 // MARK: - @objc func
 
 
-private extension TodoTableViewCell {
+extension TodoTableViewCell {
     @objc func onClickSwitch(sender: Any) {
         
         guard let task = self.task else { return }
-        if switchButton.isOn {
+        isSwitchOn = switchButton.isOn
+        
+        if isSwitchOn {
             contentLabel.textColor = UIColors.lightGray
             dateLabel.textColor = UIColors.lightGray
-            contentLabel.attributedText = task.title?.strikeThrough()
-            task.isCompleted = true
-            taskManeger.updateTaskData(newTaskData: task) {
-                print("누름")
-            }
+            taskManeger.completedTask(newTask: task, isCompleted: true)
         } else {
             contentLabel.textColor = UIColors.black
             dateLabel.textColor = UIColors.black
             contentLabel.attributedText = nil
             contentLabel.text = task.title
-            task.isCompleted = false
-            taskManeger.updateTaskData(newTaskData: task) {
-                print("누름")
-            }
+            taskManeger.completedTask(newTask: task, isCompleted: false)
+        }
+
+    }
+    
+    func setSwitchOn(_ isOn: Bool) {
+        isSwitchOn = isOn
+        switchButton.isOn = isOn
+        if isOn {
+            contentLabel.textColor = UIColors.lightGray
+            dateLabel.textColor = UIColors.lightGray
+        } else {
+            contentLabel.textColor = UIColors.black
+            dateLabel.textColor = UIColors.black
         }
     }
+    
 }
