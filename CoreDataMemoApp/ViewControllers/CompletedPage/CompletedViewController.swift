@@ -48,7 +48,7 @@ extension CompletedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.CompletedTableViewCell, for: indexPath) as! CompletedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.completedTableViewCell, for: indexPath) as! CompletedTableViewCell
         
         cell.task = taskManager.filterIsCompleted()[indexPath.row]
         
@@ -85,7 +85,7 @@ private extension CompletedViewController {
     func tableViewSetting() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CompletedTableViewCell.self, forCellReuseIdentifier: Cell.CompletedTableViewCell)
+        tableView.register(CompletedTableViewCell.self, forCellReuseIdentifier: Cell.completedTableViewCell)
     }
     func tableViewMakeUI() {
         view.addSubview(tableView)

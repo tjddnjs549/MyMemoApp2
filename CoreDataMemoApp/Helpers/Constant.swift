@@ -21,7 +21,7 @@ public enum Font {
 
 public enum CGColors {
     static let orange = CGColor(red: 0.98, green: 0.52, blue: 0.00, alpha: 1.00)
-    static let black = CGColor(red: 0.98, green: 0.52, blue: 0.00, alpha: 1.00)
+    static let black = CGColor(red: 0.0, green: 0.0, blue: 0.00, alpha: 1.00)
     static let clear = CGColor(red: 0, green: 0, blue: 0.00, alpha: 0)
     static let lightGray = CGColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1)
 }
@@ -39,7 +39,8 @@ public enum UIColors {
 
 public enum Cell {
     static let todoTableViewCell: String = "TodoTableViewCell"
-    static let CompletedTableViewCell: String = "CompletedTableViewCell"
+    static let completedTableViewCell: String = "CompletedTableViewCell"
+    static let myProfileCollectionViewCell: String = "MyProfileCollectionViewCell"
 }
 
 

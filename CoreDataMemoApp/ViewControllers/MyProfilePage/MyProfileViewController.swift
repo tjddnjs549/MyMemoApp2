@@ -12,26 +12,117 @@ final class MyProfileViewController: UIViewController {
     
     var profileView = MyProfileView()
     
+    var imageItemArray: [UIImage] = [
+        UIImage(named: "1")!.resized(to: CGSize(width: 130, height: 130)),
+        UIImage(named: "2")!.resized(to: CGSize(width: 130, height: 130)),
+        UIImage(named: "3")!.resized(to: CGSize(width: 130, height: 130)),
+        UIImage(named: "4")!.resized(to: CGSize(width: 130, height: 130)),
+        UIImage(named: "5")!.resized(to: CGSize(width: 130, height: 130)),
+        UIImage(named: "6")!.resized(to: CGSize(width: 130, height: 130)),
+        UIImage(named: "7")!.resized(to: CGSize(width: 130, height: 130))
+    ]
+    
+    private lazy var collectionView: UICollectionView = {
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collection.showsHorizontalScrollIndicator = false
+        collection.backgroundColor = .clear
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        return collection
+    }()
+    
     override func loadView() {
         view = profileView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionViewSetting()
         viewMakeUI()
-        imagePickerSetting()
-        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
 }
 
 
-// MARK: - 네비게이션 및 탭바
+extension MyProfileViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewWidth = collectionView.bounds.width
+        let itemWidth = (collectionViewWidth - 4) / 3
+        let itemHeight = itemWidth
+        
+        return CGSize(width: itemWidth, height: itemHeight)
+    }
+}
 
+
+// MARK: - collectionViewMakeUI
+
+private extension MyProfileViewController {
+    
+    func collectionViewSetting() {
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(MyProfileCollectionViewCell.self, forCellWithReuseIdentifier: Cell.myProfileCollectionViewCell)
+        collectionMakeUI()
+    }
+    
+    func collectionMakeUI() {
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: self.profileView.selectedDivider.bottomAnchor, constant: 1.5)
+        ])
+    }
+    
+}
+
+extension MyProfileViewController: UICollectionViewDataSource {
+    
+    //셀 몇개?
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageItemArray.count
+    }
+    
+    //셀 어떤 식으로 보여줘? -> 컬렉션뷰가 2개면 여기서 셀을 등록해야 한다⭐️⭐️⭐️⭐️⭐️
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print(#function)
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: Cell.myProfileCollectionViewCell, for: indexPath) as! MyProfileCollectionViewCell
+        
+            cell.profileImageView.image = self.imageItemArray[indexPath.item]
+        
+        return cell
+        
+    }
+}
+
+
+extension MyProfileViewController: UICollectionViewDelegate {
+    
+    //셀을 클릭하면
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+}
+
+// MARK: - 네비게이션 및 탭바
 
 private extension MyProfileViewController {
     
@@ -51,13 +142,24 @@ private extension MyProfileViewController {
                 NSAttributedString.Key.foregroundColor: UIColors.black
             ]
         }
+        var items: [UIBarButtonItem] = []
+        
         if let menuImage = UIImage(named: "Menu") {
             let scaledMenuImage = menuImage.resized(to: CGSize(width: 20, height: 20))
             let scaledImage = scaledMenuImage.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.black)
             let menuBtn = UIBarButtonItem(image: scaledImage, style: .done, target: self, action: #selector(menuButtonTapped))
             
-            navigationItem.rightBarButtonItem = menuBtn
+            items.append(menuBtn)
         }
+        
+        if let plusImage = UIImage(systemName: "plus.bubble") {
+            let scaledPlusImage = plusImage.resized(to: CGSize(width: 26, height: 26))
+            let scaledImage = scaledPlusImage.withRenderingMode(.alwaysOriginal).withTintColor(UIColors.black)
+            let plusBtn = UIBarButtonItem(image: scaledImage, style: .done, target: self, action: #selector(plusButtonTapped))
+            
+            items.append(plusBtn)
+        }
+        navigationItem.rightBarButtonItems = items
     }
     
 }
@@ -69,25 +171,17 @@ extension MyProfileViewController {
     @objc func menuButtonTapped() {
         return
     }
+    @objc func plusButtonTapped() {
+        setupImagePicker()
+    }
+    
+    
 }
 
-// MARK: - 이미지 제스쳐 및 PHPickerViewController
+// MARK: - PHPickerViewController
 
 extension MyProfileViewController {
     
-    private func imagePickerSetting() {
-        setupTapGestures()
-    }
-    
-    private func setupTapGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpImageView))
-        profileView.profileView.addGestureRecognizer(tapGesture)
-        profileView.profileView.isUserInteractionEnabled = true
-    }
-    @objc func touchUpImageView() {
-        print("이미지뷰 터치")
-        setupImagePicker()
-    }
     private func setupImagePicker() {
         var configuration = PHPickerConfiguration()
         configuration.selectionLimit = 0
@@ -111,9 +205,11 @@ extension MyProfileViewController: PHPickerViewControllerDelegate {
         
         if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
-                DispatchQueue.main.async {
-                    // 이미지뷰에 표시
-                    self.profileView.profileView.image = image as? UIImage
+                if let image = image as? UIImage {
+                    DispatchQueue.main.async {
+                        self.imageItemArray.append(image.resized(to: CGSize(width: 130, height: 130)))
+                        self.collectionView.reloadData()
+                    }
                 }
             }
         } else {

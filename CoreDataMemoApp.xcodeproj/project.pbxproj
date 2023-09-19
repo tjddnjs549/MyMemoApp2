@@ -19,6 +19,7 @@
 		634990C62AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 634990C42AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld */; };
 		634990C82AB5700C00D4E339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 634990C72AB5700C00D4E339 /* Assets.xcassets */; };
 		634990CB2AB5700C00D4E339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634990C92AB5700C00D4E339 /* LaunchScreen.storyboard */; };
+		63606B872AB9932600191DB8 /* MyProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63606B862AB9932600191DB8 /* MyProfileCollectionViewCell.swift */; };
 		63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6BFC2AB5744C007BE767 /* MainViewController.swift */; };
 		63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */; };
 		63BB6C022AB575CC007BE767 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C012AB575CC007BE767 /* Constant.swift */; };
@@ -53,6 +54,7 @@
 		634990C72AB5700C00D4E339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		634990CA2AB5700C00D4E339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		634990CC2AB5700C00D4E339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63606B862AB9932600191DB8 /* MyProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		63BB6BFC2AB5744C007BE767 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		63BB6C012AB575CC007BE767 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */,
 				63BB6C0B2AB57FB1007BE767 /* MyProfileView.swift */,
+				63606B862AB9932600191DB8 /* MyProfileCollectionViewCell.swift */,
 			);
 			path = MyProfilePage;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				63BB6C042AB577B9007BE767 /* Extension+Button.swift in Sources */,
 				634990BE2AB5700B00D4E339 /* SceneDelegate.swift in Sources */,
 				63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */,
+				63606B872AB9932600191DB8 /* MyProfileCollectionViewCell.swift in Sources */,
 				63490BA62AB889D100B3908B /* Task+CoreDataProperties.swift in Sources */,
 				63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */,
 				63BB6C0E2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift in Sources */,

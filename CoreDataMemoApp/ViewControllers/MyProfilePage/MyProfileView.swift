@@ -14,6 +14,8 @@ final class MyProfileView: UIView {
     
     lazy var profileView: UIImageView = {
         let image = UIImageView()
+        image.image = UIImage(named: "Sparta") // 이미지 설정
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
@@ -113,8 +115,6 @@ final class MyProfileView: UIView {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.black, font: Font.MiddleBoldFont)
         label.text = "르탄이"
-        label.layer.borderWidth = 2.0
-        label.layer.borderColor = UIColor.black.cgColor
         return label
     }()
     
@@ -161,8 +161,11 @@ final class MyProfileView: UIView {
     
     private let moreImageButton: UIButton = {
         let more = UIButton(type: .custom)
-        more.buttonMakeUI(cornerRadius: 4, borderWidth: 2, borderColor: CGColors.lightGray, setTitle: "mo", font: Font.MiddleBoldFont, setTitleColor: UIColors.black)
-        //follow.addTarget(self, action: #selector(moreImageButtonTapped), for: .touchUpInside)
+        more.setImage(UIImage(named: "More")?.resized(to: CGSize(width: 30, height: 30)), for: .normal)
+        more.tintColor = UIColors.black
+        more.contentVerticalAlignment = .center
+        more.contentHorizontalAlignment = .center
+        more.translatesAutoresizingMaskIntoConstraints = false
         return more
     }()
     
@@ -183,6 +186,74 @@ final class MyProfileView: UIView {
         return divider
     }()
     
+    private let leftButton: UIButton = {
+        let left = UIButton(type: .custom)
+        left.setImage(UIImage(named: "Item1")?.resized(to: CGSize(width: 22.5, height: 22.5)), for: .normal)
+        left.tintColor = UIColors.black
+        left.contentVerticalAlignment = .center
+        left.contentHorizontalAlignment = .center
+        left.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
+        left.translatesAutoresizingMaskIntoConstraints = false
+        return left
+    }()
+    
+    @objc func leftButtonTapped() {
+        UIView.animate(withDuration: 0.3) {
+            self.selectedDivider.center.x = self.leftButton.center.x
+        }
+    }
+    
+    private let middleButton: UIButton = {
+        let mid = UIButton(type: .custom)
+        mid.setImage(UIImage(named: "Item1")?.resized(to: CGSize(width: 22.5, height: 22.5)), for: .normal)
+        mid.tintColor = UIColors.black
+        mid.contentVerticalAlignment = .center
+        mid.contentHorizontalAlignment = .center
+        mid.addTarget(self, action: #selector(middleButtonTapped), for: .touchUpInside)
+        mid.translatesAutoresizingMaskIntoConstraints = false
+        return mid
+    }()
+    
+    @objc func middleButtonTapped() {
+        UIView.animate(withDuration: 0.3) {
+            self.selectedDivider.center.x = self.middleButton.center.x
+        }
+    }
+    
+    private let rightButton: UIButton = {
+        let right = UIButton(type: .custom)
+        right.setImage(UIImage(named: "Item1")?.resized(to: CGSize(width: 22.5, height: 22.5)), for: .normal)
+        right.tintColor = UIColors.black
+        right.contentVerticalAlignment = .center
+        right.contentHorizontalAlignment = .center
+        right.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+        right.translatesAutoresizingMaskIntoConstraints = false
+        return right
+    }()
+
+    @objc func rightButtonTapped() {
+        UIView.animate(withDuration: 0.3) {
+            self.selectedDivider.center.x = self.rightButton.center.x
+        }
+    }
+    
+    private lazy var itemButtonStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [leftButton,middleButton,rightButton])
+        stack.spacing = 0
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        stack.alignment = .fill
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    let selectedDivider: UIView = {
+        let divider = UIView()
+        divider.backgroundColor = UIColors.black
+        divider.layer.cornerRadius = 3.0
+        divider.translatesAutoresizingMaskIntoConstraints = false
+        return divider
+    }()
     // MARK: - init, drawing Cycle
     
     
@@ -203,8 +274,8 @@ final class MyProfileView: UIView {
         super.draw(rect)
         self.profileView.clipsToBounds = true
         self.profileView.layer.cornerRadius = self.profileView.frame.width / 2
-        profileView.layer.borderColor = UIColor.black.cgColor
-        profileView.layer.borderWidth = 2
+        profileView.layer.borderColor = CGColors.black
+        profileView.layer.borderWidth = 1.5
     }
     
 }
@@ -218,18 +289,20 @@ private extension MyProfileView {
         self.addSubview(middleStackView)
         self.addSubview(buttonStackView)
         self.addSubview(divider)
+        self.addSubview(itemButtonStackView)
+        self.addSubview(selectedDivider)
         
         NSLayoutConstraint.activate([
             highStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14),
             highStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -28),
-            highStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
+            highStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
             
             profileView.heightAnchor.constraint(equalToConstant: 90),
             profileView.widthAnchor.constraint(equalToConstant: 90),
             
             middleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             middleStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
-            middleStackView.topAnchor.constraint(equalTo: self.highStackView.bottomAnchor, constant: 30),
+            middleStackView.topAnchor.constraint(equalTo: self.highStackView.bottomAnchor, constant: 16),
             
             buttonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             buttonStackView.topAnchor.constraint(equalTo: self.middleStackView.bottomAnchor, constant: 15),
@@ -241,7 +314,24 @@ private extension MyProfileView {
             divider.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
             divider.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
             divider.topAnchor.constraint(equalTo: self.buttonStackView.bottomAnchor, constant: 16),
-            divider.heightAnchor.constraint(equalToConstant: 1.2)
+            divider.heightAnchor.constraint(equalToConstant: 1.2),
+            
+            itemButtonStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            itemButtonStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            itemButtonStackView.topAnchor.constraint(equalTo: self.divider.bottomAnchor, constant: 0),
+            itemButtonStackView.heightAnchor.constraint(equalToConstant: 40),
+            
+            leftButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
+            middleButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
+            rightButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
+            
+            selectedDivider.heightAnchor.constraint(equalToConstant: 1.5),
+            selectedDivider.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
+            selectedDivider.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            selectedDivider.topAnchor.constraint(equalTo: self.itemButtonStackView.bottomAnchor, constant: 0),
+            
+            
+            
         ])
     }
 }
