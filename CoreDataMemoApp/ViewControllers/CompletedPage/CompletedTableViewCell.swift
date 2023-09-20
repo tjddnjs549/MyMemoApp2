@@ -9,6 +9,14 @@ import UIKit
 
 final class CompletedTableViewCell: UITableViewCell {
 
+    var task: Task? {
+        didSet {
+            contentLabel.text = task?.title
+            dateLabel.text = task?.createDateString
+        }
+    }
+    
+    
     var contentLabel: UILabel = {
         let ctn = UILabel()
         ctn.labelMakeUI(textColor: UIColors.black, font: Font.contentLabelFont)
@@ -57,5 +65,4 @@ private extension CompletedTableViewCell {
             
         ])
     }
-    
 }

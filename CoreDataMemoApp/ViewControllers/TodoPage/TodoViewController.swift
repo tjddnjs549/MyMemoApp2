@@ -9,10 +9,8 @@ import UIKit
 
 final class TodoViewController: UIViewController {
     
-    var dummmy: [String] = ["asd", "asd1", "asd2", "asd3", "asd4", "asd5"]
-    
-    
     let taskManager = CoreDataManager.shared
+    
     // MARK: - properties
     
     private let tableView: UITableView = {
@@ -20,7 +18,6 @@ final class TodoViewController: UIViewController {
         tbView.translatesAutoresizingMaskIntoConstraints = false
         return tbView
     }()
-    
     
     // MARK: - view lifecycle
     
@@ -41,18 +38,16 @@ final class TodoViewController: UIViewController {
 
 extension TodoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(#function)
         return taskManager.getTaskData().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.todoTableViewCell, for: indexPath) as! TodoTableViewCell
         
-        let taskList = taskManager.getTaskData()
+        let task = taskManager.getTaskData().sorted {$0.createDate! > $1.createDate! }[indexPath.row]
         
-        cell.task = taskList[indexPath.row]
-        
+        cell.task = task
+        cell.setSwitchOn(task.isCompleted)
         
         cell.selectionStyle = .none
         return cell
@@ -64,21 +59,54 @@ extension TodoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let detailVC = DetailViewController()
+        detailVC.task = taskManager.getTaskData().sorted { $0.createDate! > $1.createDate! }[indexPath.row]
+        
+        navigationController?.pushViewController(detailVC, animated: true)
         
     }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        UIView.animate(withDuration: 0.3) {
+            guard velocity.y != 0 else { return }
+            if velocity.y < 0 {
+                let height = self.tabBarController?.tabBar.frame.height ?? 0.0
+                self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY - height)
+            } else {
+                self.tabBarController?.tabBar.frame.origin = CGPoint(x: 0, y: UIScreen.main.bounds.maxY)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
+            self.taskManager.deleteTaskData(data: self.taskManager.getTaskData()[indexPath.row]) {
+                self.tableView.reloadData()
+            }
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = UIColors.orange
+        deleteAction.image = UIImage(systemName: "trash.circle")
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
-
-
 
 // MARK: - viewSetting
 
 private extension TodoViewController {
     
-    
     func viewMakeUI() {
         view.backgroundColor = UIColors.clear
-        naviBarSetting()
         tableViewSetting()
+        naviBarSetting()
         tableViewMakeUI()
     }
     
@@ -115,8 +143,7 @@ private extension TodoViewController {
         navigationItem.rightBarButtonItem = plusButton
         
         let backButton = UIBarButtonItem(title: "뒤로", style: .done, target: self, action: #selector(backButtonTapped))
-        
-        self.navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem = backButton
     }
 }
 

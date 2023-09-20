@@ -9,28 +9,19 @@ import UIKit
 
 final class DetailView: UIView {
     
-
-    
-    
     lazy var contentTextView: UITextView = {
         let content = UITextView()
         content.makeUITextView(backgroundColor: UIColors.white, text: "내용을 입력해주세요", font: Font.TextViewFont, borderWidth: 1.0, cornerRadius: 8, borderColor: CGColors.orange)
         return content
     }()
     
-    private let segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: ["none", "work", "life"])
-        control.translatesAutoresizingMaskIntoConstraints = false
-        return control
-    }()
-    
     private let firstDateLabel: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
-        label.text = "최초 등록:"
+        label.text = "최초:"
         return label
     }()
-    private let firstDate: UILabel = {
+    lazy var firstDate: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
         label.text = "2023년 9월 20일 18:18"
@@ -40,11 +31,11 @@ final class DetailView: UIView {
     private let modifiedDateLabel: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
-        label.text = "   수정 등록:"
+        label.text = "   수정:"
         return label
     }()
     
-    private var modifiedDate: UILabel = {
+    lazy var modifiedDate: UILabel = {
         let label = UILabel()
         label.labelMakeUI(textColor: UIColors.lightGray, font: Font.dateLabelFont)
         label.text = "2023년 9월 20일 18:18"
@@ -87,7 +78,7 @@ final class DetailView: UIView {
     }()
     
     private lazy var allStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [contentTextView, segmentedControl, DateStackView])
+        let stack = UIStackView(arrangedSubviews: [contentTextView, DateStackView])
         stack.spacing = 20
         stack.axis = .vertical
         stack.distribution = .fill
@@ -147,9 +138,7 @@ extension DetailView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.endEditing(true)
-        
     }
-    
 }
 
 // MARK: - makeUI
@@ -172,11 +161,9 @@ private extension DetailView {
             allStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             allStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             allStackViewTopConstraint,
-            allStackView.heightAnchor.constraint(equalToConstant: 350)
+            allStackView.heightAnchor.constraint(equalToConstant: 300)
         ])
-        
     }
-    
 }
 
 // MARK: - UITextViewDelegate

@@ -10,7 +10,8 @@ import UIKit
 final class CompletedViewController: UIViewController {
     
     
-    var dummmy: [String] = ["asd", "asd1", "asd2", "asd3", "asd4", "asd5"]
+    let taskManager = CoreDataManager.shared
+    
     // MARK: - properties
     
     private let tableView: UITableView = {
@@ -42,14 +43,15 @@ final class CompletedViewController: UIViewController {
 
 extension CompletedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dummmy.count
+        return taskManager.filterIsCompleted().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.CompletedTableViewCell, for: indexPath) as! CompletedTableViewCell
-        cell.contentLabel.text = dummmy[indexPath.row]
-        cell.dateLabel.text = dummmy[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.completedTableViewCell, for: indexPath) as! CompletedTableViewCell
+        
+        cell.task = taskManager.filterIsCompleted()[indexPath.row]
+        
         return cell
     }
 }
@@ -59,6 +61,12 @@ extension CompletedViewController: UITableViewDataSource {
 
 extension CompletedViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.task = taskManager.filterIsCompleted()[indexPath.row]
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 
@@ -77,7 +85,7 @@ private extension CompletedViewController {
     func tableViewSetting() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CompletedTableViewCell.self, forCellReuseIdentifier: Cell.CompletedTableViewCell)
+        tableView.register(CompletedTableViewCell.self, forCellReuseIdentifier: Cell.completedTableViewCell)
     }
     func tableViewMakeUI() {
         view.addSubview(tableView)
@@ -88,7 +96,6 @@ private extension CompletedViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
-        
     }
 }
 
@@ -100,5 +107,4 @@ private extension CompletedViewController {
     @objc func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
-   
 }

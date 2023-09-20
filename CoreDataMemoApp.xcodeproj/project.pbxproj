@@ -14,6 +14,9 @@
 		634990C62AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 634990C42AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld */; };
 		634990C82AB5700C00D4E339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 634990C72AB5700C00D4E339 /* Assets.xcassets */; };
 		634990CB2AB5700C00D4E339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634990C92AB5700C00D4E339 /* LaunchScreen.storyboard */; };
+		63606B872AB9932600191DB8 /* MyProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63606B862AB9932600191DB8 /* MyProfileCollectionViewCell.swift */; };
+		636BD5992ABAB5F40079638F /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636BD5972ABAB5F40079638F /* Task+CoreDataClass.swift */; };
+		636BD59A2ABAB5F40079638F /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636BD5982ABAB5F40079638F /* Task+CoreDataProperties.swift */; };
 		63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6BFC2AB5744C007BE767 /* MainViewController.swift */; };
 		63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */; };
 		63BB6C022AB575CC007BE767 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C012AB575CC007BE767 /* Constant.swift */; };
@@ -25,13 +28,10 @@
 		63BB6C102AB58BB8007BE767 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */; };
 		63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */; };
 		63BB6C142AB596E8007BE767 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */; };
-		63BB6C162AB5982F007BE767 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C152AB5982F007BE767 /* Extension+String.swift */; };
 		63BB6C1D2AB5E582007BE767 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C1C2AB5E582007BE767 /* DetailViewController.swift */; };
 		63BB6C1F2AB5E595007BE767 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C1E2AB5E595007BE767 /* DetailView.swift */; };
 		63BB6C212AB5E6BB007BE767 /* Extension+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */; };
 		63C364C02AB647FC001E6971 /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364BF2AB647FC001E6971 /* CompletedTableViewCell.swift */; };
-		63C364C32AB64DEC001E6971 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364C12AB64DEC001E6971 /* Task+CoreDataClass.swift */; };
-		63C364C42AB64DEC001E6971 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364C22AB64DEC001E6971 /* Task+CoreDataProperties.swift */; };
 		63C364C62AB64F00001E6971 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C364C52AB64F00001E6971 /* CoreDataManager.swift */; };
 		63E973E62AB570E600382FAB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 63E973E52AB570E600382FAB /* .gitignore */; };
 /* End PBXBuildFile section */
@@ -46,6 +46,9 @@
 		634990C72AB5700C00D4E339 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		634990CA2AB5700C00D4E339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		634990CC2AB5700C00D4E339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63606B862AB9932600191DB8 /* MyProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		636BD5972ABAB5F40079638F /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		636BD5982ABAB5F40079638F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		63BB6BFC2AB5744C007BE767 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		63BB6C012AB575CC007BE767 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -57,13 +60,10 @@
 		63BB6C0F2AB58BB8007BE767 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		63BB6C112AB58BCD007BE767 /* CompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedViewController.swift; sourceTree = "<group>"; };
 		63BB6C132AB596E8007BE767 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
-		63BB6C152AB5982F007BE767 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		63BB6C1C2AB5E582007BE767 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		63BB6C1E2AB5E595007BE767 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITextView.swift"; sourceTree = "<group>"; };
 		63C364BF2AB647FC001E6971 /* CompletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTableViewCell.swift; sourceTree = "<group>"; };
-		63C364C12AB64DEC001E6971 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		63C364C22AB64DEC001E6971 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		63C364C52AB64F00001E6971 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		63E973E52AB570E600382FAB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63490B9F2AB8778500B3908B /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				636BD5972ABAB5F40079638F /* Task+CoreDataClass.swift */,
+				636BD5982ABAB5F40079638F /* Task+CoreDataProperties.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
 		634990AF2AB5700B00D4E339 = {
 			isa = PBXGroup;
 			children = (
@@ -117,8 +126,7 @@
 		63BB6BF62AB57252007BE767 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				63C364C12AB64DEC001E6971 /* Task+CoreDataClass.swift */,
-				63C364C22AB64DEC001E6971 /* Task+CoreDataProperties.swift */,
+				63490B9F2AB8778500B3908B /* Task */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,7 +175,6 @@
 				63BB6C032AB577B9007BE767 /* Extension+Button.swift */,
 				63BB6C052AB577D7007BE767 /* Extension+Label.swift */,
 				63BB6C0D2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift */,
-				63BB6C152AB5982F007BE767 /* Extension+String.swift */,
 				63BB6C202AB5E6BB007BE767 /* Extension+UITextView.swift */,
 			);
 			path = Extensions;
@@ -222,6 +229,7 @@
 			children = (
 				63BB6BFE2AB5749D007BE767 /* MyProfileViewController.swift */,
 				63BB6C0B2AB57FB1007BE767 /* MyProfileView.swift */,
+				63606B862AB9932600191DB8 /* MyProfileCollectionViewCell.swift */,
 			);
 			path = MyProfilePage;
 			sourceTree = "<group>";
@@ -298,26 +306,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63BB6C162AB5982F007BE767 /* Extension+String.swift in Sources */,
 				63BB6C1F2AB5E595007BE767 /* DetailView.swift in Sources */,
 				63BB6C1D2AB5E582007BE767 /* DetailViewController.swift in Sources */,
 				63BB6C022AB575CC007BE767 /* Constant.swift in Sources */,
-				63C364C42AB64DEC001E6971 /* Task+CoreDataProperties.swift in Sources */,
 				63BB6C062AB577D7007BE767 /* Extension+Label.swift in Sources */,
 				63BB6C212AB5E6BB007BE767 /* Extension+UITextView.swift in Sources */,
 				63BB6C0C2AB57FB1007BE767 /* MyProfileView.swift in Sources */,
 				63C364C62AB64F00001E6971 /* CoreDataManager.swift in Sources */,
 				63BB6C142AB596E8007BE767 /* TodoTableViewCell.swift in Sources */,
 				63BB6BFF2AB5749D007BE767 /* MyProfileViewController.swift in Sources */,
+				636BD5992ABAB5F40079638F /* Task+CoreDataClass.swift in Sources */,
 				63BB6C0A2AB57F9A007BE767 /* MainView.swift in Sources */,
 				634990C02AB5700B00D4E339 /* TabbarViewController.swift in Sources */,
+				636BD59A2ABAB5F40079638F /* Task+CoreDataProperties.swift in Sources */,
 				63BB6C102AB58BB8007BE767 /* TodoViewController.swift in Sources */,
 				634990BC2AB5700B00D4E339 /* AppDelegate.swift in Sources */,
 				634990C62AB5700B00D4E339 /* CoreDataMemoApp.xcdatamodeld in Sources */,
 				63BB6C042AB577B9007BE767 /* Extension+Button.swift in Sources */,
 				634990BE2AB5700B00D4E339 /* SceneDelegate.swift in Sources */,
-				63C364C32AB64DEC001E6971 /* Task+CoreDataClass.swift in Sources */,
 				63BB6BFD2AB5744C007BE767 /* MainViewController.swift in Sources */,
+				63606B872AB9932600191DB8 /* MyProfileCollectionViewCell.swift in Sources */,
 				63BB6C122AB58BCD007BE767 /* CompletedViewController.swift in Sources */,
 				63BB6C0E2AB57FE5007BE767 /* Extension+UIImage,UIImageView.swift in Sources */,
 				63C364C02AB647FC001E6971 /* CompletedTableViewCell.swift in Sources */,
