@@ -328,9 +328,7 @@ private extension MyProfileView {
             selectedDivider.heightAnchor.constraint(equalToConstant: 1.5),
             selectedDivider.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
             selectedDivider.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            selectedDivider.topAnchor.constraint(equalTo: self.itemButtonStackView.bottomAnchor, constant: 0),
-            
-            
+            selectedDivider.topAnchor.constraint(equalTo: self.itemButtonStackView.bottomAnchor, constant: 0)
             
         ])
     }

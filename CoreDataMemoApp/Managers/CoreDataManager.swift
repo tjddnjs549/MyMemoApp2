@@ -11,24 +11,20 @@ import CoreData
 
 final class CoreDataManager {
     
-    // 싱글톤
     static let shared = CoreDataManager()
     private init() {}
     
-    // 앱 델리게이트
     let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
     
-    // 임시저장소
-    lazy var context: NSManagedObjectContext? = appDelegate?.persistentContainer.viewContext //컨테이너의 임시 저정소 접근
+    lazy var context: NSManagedObjectContext? = appDelegate?.persistentContainer.viewContext
     
-    // 엔터티 이름 (코어데이터에 저장된 객체)
     let modelName: String = "Task"
     
     func filterIsCompleted() -> [Task] {
         return getTaskData().filter { $0.isCompleted == true }
     }
     
-    // MARK: - [Read] 코어데이터에 저장된 데이터 모두 읽어오기
+    // MARK: - Read
     func getTaskData() -> [Task] {
         var taskList: [Task] = []
         
@@ -51,14 +47,7 @@ final class CoreDataManager {
     }
     
     
-    //    @NSManaged public var id: UUID?
-    //    @NSManaged public var title: String?
-    //    @NSManaged public var createDate: Date?
-    //    @NSManaged public var modifyDate: Date?
-    //    @NSManaged public var isCompleted: Bool
-    
-    
-    // MARK: - [Create] 코어데이터에 데이터 생성하기
+    // MARK: - Create
     func saveTaskData(content: String?, modifyDate: Date?, isCompleted: Bool, completion: @escaping () -> Void) {
         
         if let context = context {
@@ -78,7 +67,7 @@ final class CoreDataManager {
         }
     }
     
-    // MARK: - [Delete] 코어데이터에서 데이터 삭제하기 (일치하는 데이터 찾아서 ===> 삭제)
+    // MARK: - Delete
     func deleteTaskData(data: Task, completion: @escaping () -> Void) {
         guard let id = data.id else { return }
         if let context = context {
@@ -96,7 +85,7 @@ final class CoreDataManager {
             }
         }
     }
-    // MARK: - [Update] 코어데이터에서 데이터 수정하기 (일치하는 데이터 찾아서 ===> 수정)
+    // MARK: - Update
     func updateTaskData(newTaskData: Task, completion: @escaping () -> Void) {
         guard let id = newTaskData.id else { return }
         if let context = context {
@@ -124,9 +113,5 @@ final class CoreDataManager {
         }
         updateTaskData(newTaskData: newTask) {
         }
-    }
-    
-    func filterCategory(category: Category) -> [Task] {
-        return getTaskData().filter { $0.category == category }
     }
 }

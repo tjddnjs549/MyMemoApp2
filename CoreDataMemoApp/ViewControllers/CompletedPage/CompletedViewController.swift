@@ -107,5 +107,4 @@ private extension CompletedViewController {
     @objc func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
-   
 }

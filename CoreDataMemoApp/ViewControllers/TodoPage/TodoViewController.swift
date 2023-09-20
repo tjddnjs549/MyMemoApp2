@@ -9,8 +9,8 @@ import UIKit
 
 final class TodoViewController: UIViewController {
     
-    let categoryManager = CategoryDataManager.shared
     let taskManager = CoreDataManager.shared
+    
     // MARK: - properties
     
     private let tableView: UITableView = {
@@ -38,30 +38,19 @@ final class TodoViewController: UIViewController {
 
 extension TodoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let category = categoryManager.getCategory()[section]
-        let tasksInCategory = taskManager.filterCategory(category: category).sorted { $0.createDate! > $1.createDate! }
-        return tasksInCategory.count
+        return taskManager.getTaskData().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.todoTableViewCell, for: indexPath) as! TodoTableViewCell
         
-        let section = indexPath.section
-        let category = categoryManager.getCategory()[section]
-        
-        let tasksInCategory = taskManager.filterCategory(category: category).sorted { $0.createDate! > $1.createDate! }
-        
-        let task = tasksInCategory[indexPath.row]
+        let task = taskManager.getTaskData().sorted {$0.createDate! > $1.createDate! }[indexPath.row]
         
         cell.task = task
         cell.setSwitchOn(task.isCompleted)
         
         cell.selectionStyle = .none
         return cell
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        let categories = categoryManager.getCategory()
-        return categories.count
     }
 }
 
@@ -113,7 +102,6 @@ extension TodoViewController: UITableViewDelegate {
 // MARK: - viewSetting
 
 private extension TodoViewController {
-    
     
     func viewMakeUI() {
         view.backgroundColor = UIColors.clear
