@@ -9,7 +9,6 @@ import UIKit
 
 final class CompletedViewController: UIViewController {
     
-    
     let taskManager = CoreDataManager.shared
     
     // MARK: - properties
@@ -38,7 +37,6 @@ final class CompletedViewController: UIViewController {
     }
 }
 
-
 // MARK: - UITableViewDataSource
 
 extension CompletedViewController: UITableViewDataSource {
@@ -56,7 +54,6 @@ extension CompletedViewController: UITableViewDataSource {
     }
 }
 
-
 // MARK: - UITableViewDelegate
 
 extension CompletedViewController: UITableViewDelegate {
@@ -68,7 +65,6 @@ extension CompletedViewController: UITableViewDelegate {
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
-
 
 // MARK: - MakeUI
 
@@ -98,7 +94,6 @@ private extension CompletedViewController {
         ])
     }
 }
-
 
 // MARK: - @objc func
 

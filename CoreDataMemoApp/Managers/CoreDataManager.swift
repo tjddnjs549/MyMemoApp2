@@ -105,10 +105,10 @@ final class CoreDataManager {
     }
     
     func completedTask(newTask: Task, isCompleted: Bool) {
-        var task = getTaskData()
-        for index in 0..<task.count {
-            if task[index].id == newTask.id {
-                task[index].isCompleted = isCompleted
+        var _task = getTaskData()
+        for index in 0..<_task.count {
+            if _task[index].id == newTask.id {
+                _task[index].isCompleted = isCompleted
             }
         }
         updateTaskData(newTaskData: newTask) {
