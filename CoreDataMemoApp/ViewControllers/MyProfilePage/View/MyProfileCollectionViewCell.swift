@@ -9,6 +9,12 @@ import UIKit
 
 final class MyProfileCollectionViewCell: UICollectionViewCell{
     
+    var viewModel: ImageViewModel! {
+        didSet {
+            self.profileImageView.image = viewModel.itemimage
+        }
+    }
+    
     var profileImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit

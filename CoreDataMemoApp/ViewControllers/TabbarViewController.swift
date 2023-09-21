@@ -21,9 +21,11 @@ final class TabbarViewController: UITabBarController {
     }
     
     func setTabControllers() {
+        let imageManager = ImageManager()
+        let myProfileViewModel = MyprofileViewModel(dataManager: imageManager)
         let mainVC = MainViewController()
         let naviMainVC = UINavigationController(rootViewController: mainVC)
-        let MyProfileVC = MyProfileViewController()
+        let MyProfileVC = MyProfileViewController(viewModel: myProfileViewModel)
         let naviMyProfileVC = UINavigationController(rootViewController: MyProfileVC)
         
         let controllers = [naviMainVC, naviMyProfileVC]
