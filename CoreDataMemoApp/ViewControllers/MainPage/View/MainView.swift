@@ -67,7 +67,7 @@ private extension MainView {
     
     @objc func checkButtonTapped() {
         let coreDataManager = CoreDataManager.shared
-        let viewModel = TodoViewModel(dataManager: coreDataManager, title: "Main")
+        let viewModel = TodoViewModel(dataManager: coreDataManager, title: "Todo")
         let todoVC = TodoViewController(viewModel: viewModel)
         self.navigationController.pushViewController(todoVC, animated: true)
     }
