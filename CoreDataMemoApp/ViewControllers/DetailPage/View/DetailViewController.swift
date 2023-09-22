@@ -8,8 +8,22 @@
 import UIKit
 
 final class DetailViewController: UIViewController {
-    
+    // MARK: - properties
+
+    private let detailView = DetailView()
     var viewModel: DetailViewModel
+    
+    var task: Task? {
+        didSet {
+            detailView.contentTextView.text = task?.title
+            detailView.firstDate.text = task?.createDateString
+            detailView.modifiedDate.text = task?.modifyDateString
+        }
+    }
+    
+    
+    // MARK: - init
+
     
     init(viewModel: DetailViewModel, task: Task? = nil) {
         self.viewModel = viewModel
@@ -20,19 +34,7 @@ final class DetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    // MARK: - properties
 
-    private let detailView = DetailView()
-    let taskManager = CoreDataManager.shared
-    
-    
-    var task: Task? {
-        didSet {
-            detailView.contentTextView.text = task?.title
-            detailView.firstDate.text = task?.createDateString
-            detailView.modifiedDate.text = task?.modifyDateString
-        }
-    }
     
     
     // MARK: - view LifeCycle

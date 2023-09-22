@@ -28,5 +28,7 @@ final class TodoViewModel {
         dataManager.deleteTaskData(data: task) {}
     }
     
-    
+    func completedTask(data: Task, completed: Bool) {
+        dataManager.completedTask(newTask: data, isCompleted: completed)
+    }
 }
