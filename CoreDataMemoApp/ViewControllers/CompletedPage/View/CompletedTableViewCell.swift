@@ -17,13 +17,13 @@ final class CompletedTableViewCell: UITableViewCell {
     }
     
     
-    var contentLabel: UILabel = {
+    private lazy var contentLabel: UILabel = {
         let ctn = UILabel()
         ctn.labelMakeUI(textColor: UIColors.black, font: Font.contentLabelFont)
         return ctn
     }()
     
-    let dateLabel: UILabel = {
+    private lazy var dateLabel: UILabel = {
         let date = UILabel()
         date.labelMakeUI(textColor: UIColors.black, font: Font.dateLabelFont)
         return date

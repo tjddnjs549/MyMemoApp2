@@ -12,7 +12,7 @@ final class MyProfileView: UIView {
     
     // MARK: - component properties
     
-    lazy var profileView: UIImageView = {
+    private lazy var profileView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "Sparta") // 이미지 설정
         image.contentMode = .scaleAspectFit

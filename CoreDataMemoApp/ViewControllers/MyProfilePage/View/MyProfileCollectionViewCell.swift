@@ -15,7 +15,7 @@ final class MyProfileCollectionViewCell: UICollectionViewCell{
         }
     }
     
-    var profileImageView: UIImageView = {
+    private let profileImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
