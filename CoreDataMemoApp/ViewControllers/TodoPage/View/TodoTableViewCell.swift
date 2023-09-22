@@ -10,7 +10,8 @@ import UIKit
 final class TodoTableViewCell: UITableViewCell {
     
     let taskManeger = CoreDataManager.shared
-    private var isSwitchOn: Bool = false // 스위치 상태를 저장할 프로퍼티 추가
+    private var isSwitchOn: Bool = false
+    
     var task: Task? {
         didSet {
             taskDataSetting()
@@ -64,6 +65,11 @@ final class TodoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        contentLabel.attributedText = nil
+        dateLabel.attributedText = nil
+    }
+    
 }
 
 // MARK: - CellMakeUI
@@ -109,6 +115,7 @@ extension TodoTableViewCell {
         
         if isSwitchOn {
             contentLabel.textColor = UIColors.lightGray
+            contentLabel.attributedText = contentLabel.text?.strikeThrough()
             dateLabel.textColor = UIColors.lightGray
             taskManeger.completedTask(newTask: task, isCompleted: true)
         } else {
@@ -126,6 +133,7 @@ extension TodoTableViewCell {
         switchButton.isOn = isOn
         if isOn {
             contentLabel.textColor = UIColors.lightGray
+            contentLabel.attributedText = contentLabel.text?.strikeThrough()
             dateLabel.textColor = UIColors.lightGray
         } else {
             contentLabel.textColor = UIColors.black

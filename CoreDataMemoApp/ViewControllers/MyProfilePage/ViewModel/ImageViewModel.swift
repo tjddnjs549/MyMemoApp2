@@ -27,11 +27,9 @@ final class ImageViewModel {
     // Input
     func handleButtonTapped(image: UIImage?) {
         makeNewMember(image: image)
-        
     }
     
     private func makeNewMember(image: UIImage?) {
-        
         let newImage = Image(image: image)
         self.imageManager.insertImageArray(image: newImage)
     }
