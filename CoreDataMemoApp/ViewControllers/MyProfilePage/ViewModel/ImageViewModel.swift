@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageViewModel {
+final class ImageViewModel {
     
     let imageManager: ImageManager
     

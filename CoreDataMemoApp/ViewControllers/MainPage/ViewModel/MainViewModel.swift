@@ -9,5 +9,10 @@ import UIKit
 
 class MainViewModel {
     
+    let title: String
     
+    init(title: String) {
+        self.title = title
+    }
 }
+

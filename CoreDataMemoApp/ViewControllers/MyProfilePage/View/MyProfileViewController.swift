@@ -39,7 +39,7 @@ final class MyProfileViewController: UIViewController {
         super.viewDidLoad()
         collectionViewSetting()
         viewMakeUI()
-        viewModel.imageList
+        //viewModel.imageList
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }

@@ -1,26 +1,31 @@
 //
-//  CompletedViewModel.swift
+//  TodoViewModel.swift
 //  CoreDataMemoApp
 //
-//  Created by 박성원 on 2023/09/21.
+//  Created by 박성원 on 2023/09/22.
 //
 
-import UIKit
+import Foundation
 
 
-final class CompletedViewModel {
+final class TodoViewModel {
     
     var dataManager: CoreDataManager
     
     var title: String
     
+    
     var taskList: [Task] {
-        return self.dataManager.filterIsCompleted()
+        return dataManager.getTaskData()
     }
     
     init(dataManager: CoreDataManager, title: String) {
         self.dataManager = dataManager
         self.title = title
+    }
+    
+    func deletedTodo(task: Task) {
+        dataManager.deleteTaskData(data: task) {}
     }
     
     

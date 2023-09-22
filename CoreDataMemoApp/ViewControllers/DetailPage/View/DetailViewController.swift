@@ -9,6 +9,17 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
+    var viewModel: DetailViewModel
+    
+    init(viewModel: DetailViewModel, task: Task? = nil) {
+        self.viewModel = viewModel
+        self.task = task
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - properties
 
     private let detailView = DetailView()
@@ -44,7 +55,7 @@ final class DetailViewController: UIViewController {
 private extension DetailViewController {
     
     func naviBarSetting() {
-        self.title = "추가"
+        self.title = viewModel.title
         
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColors.clear
@@ -66,12 +77,10 @@ extension DetailViewController {
         if let task = self.task {
             task.title = detailView.contentTextView.text
             task.modifyDate = Date()
-            taskManager.updateTaskData(newTaskData: task) {
-            }
+            viewModel.update(newTask: task)
         } else {
             let title = detailView.contentTextView.text
-            taskManager.saveTaskData(content: title, modifyDate: Date(), isCompleted: false) {
-            }
+            viewModel.addTask(title: title, modifyDate: Date(), isCompleted: false)
         }
         self.navigationController?.popViewController(animated: true)
     }
