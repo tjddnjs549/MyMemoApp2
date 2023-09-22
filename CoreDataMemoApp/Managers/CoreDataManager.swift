@@ -20,6 +20,7 @@ final class CoreDataManager {
     
     let modelName: String = "Task"
     
+    
     func filterIsCompleted() -> [Task] {
         return getTaskData().filter { $0.isCompleted == true }
     }
@@ -69,10 +70,10 @@ final class CoreDataManager {
     
     // MARK: - Delete
     func deleteTaskData(data: Task, completion: @escaping () -> Void) {
-        guard let id = data.id else { return }
+        guard let date = data.createDate else { return }
         if let context = context {
             let request = NSFetchRequest<NSManagedObject>(entityName: self.modelName)
-            request.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+            request.predicate = NSPredicate(format: "createDate = %@", date as CVarArg)
             do {
                 let fetchedTaskList = try context.fetch(request)
                 if let targetTask = fetchedTaskList.first {
@@ -105,13 +106,12 @@ final class CoreDataManager {
     }
     
     func completedTask(newTask: Task, isCompleted: Bool) {
-        var task = getTaskData()
-        for index in 0..<task.count {
-            if task[index].id == newTask.id {
-                task[index].isCompleted = isCompleted
+        var _task = getTaskData()
+        for index in 0..<_task.count {
+            if _task[index].id == newTask.id {
+                _task[index].isCompleted = isCompleted
             }
         }
-        updateTaskData(newTaskData: newTask) {
-        }
+        updateTaskData(newTaskData: newTask) {}
     }
 }

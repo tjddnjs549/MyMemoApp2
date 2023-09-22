@@ -9,7 +9,7 @@ import UIKit
 
 final class TodoViewController: UIViewController {
     
-    let taskManager = CoreDataManager.shared
+    private let viewModel: TodoViewModel
     
     // MARK: - properties
     
@@ -18,6 +18,16 @@ final class TodoViewController: UIViewController {
         tbView.translatesAutoresizingMaskIntoConstraints = false
         return tbView
     }()
+    
+    
+    init(viewModel: TodoViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - view lifecycle
     
@@ -38,13 +48,12 @@ final class TodoViewController: UIViewController {
 
 extension TodoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskManager.getTaskData().count
+        return viewModel.taskList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.todoTableViewCell, for: indexPath) as! TodoTableViewCell
-        
-        let task = taskManager.getTaskData().sorted {$0.createDate! > $1.createDate! }[indexPath.row]
+        let task = viewModel.taskList.sorted {$0.createDate! > $1.createDate! }[indexPath.row]
         
         cell.task = task
         cell.setSwitchOn(task.isCompleted)
@@ -58,9 +67,9 @@ extension TodoViewController: UITableViewDataSource {
 extension TodoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let detailVC = DetailViewController()
-        detailVC.task = taskManager.getTaskData().sorted { $0.createDate! > $1.createDate! }[indexPath.row]
+        let viewModel = DetailViewModel(dataManager: CoreDataManager.shared, title: "Detail")
+        let detailVC = DetailViewController(viewModel: viewModel)
+        detailVC.task = viewModel.taskList.sorted { $0.createDate! > $1.createDate! }[indexPath.row]
         
         navigationController?.pushViewController(detailVC, animated: true)
         
@@ -81,9 +90,8 @@ extension TodoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
-            self.taskManager.deleteTaskData(data: self.taskManager.getTaskData()[indexPath.row]) {
-                self.tableView.reloadData()
-            }
+            self.viewModel.deletedTodo(task: self.viewModel.taskList.sorted {$0.createDate! > $1.createDate! }[indexPath.row])
+            self.tableView.reloadData()
             completionHandler(true)
         }
         deleteAction.backgroundColor = UIColors.orange
@@ -130,7 +138,7 @@ private extension TodoViewController {
     }
     
     func naviBarSetting() {
-        self.title = "Todo"
+        self.title = viewModel.title
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColors.white
         appearance.shadowColor = .none
@@ -152,7 +160,8 @@ private extension TodoViewController {
 private extension TodoViewController {
     
     @objc func plusButtonTapped() {
-        let detailVC = DetailViewController()
+        let viewModel = DetailViewModel(dataManager: CoreDataManager.shared, title: "Detail")
+        let detailVC = DetailViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

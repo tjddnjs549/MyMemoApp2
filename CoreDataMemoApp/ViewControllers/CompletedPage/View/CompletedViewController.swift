@@ -9,9 +9,7 @@ import UIKit
 
 final class CompletedViewController: UIViewController {
     
-    
-    let taskManager = CoreDataManager.shared
-    
+    let viewModel: CompletedViewModel
     // MARK: - properties
     
     private let tableView: UITableView = {
@@ -19,6 +17,15 @@ final class CompletedViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
+    
+    init(viewModel: CompletedViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - view lifeCycle
     
@@ -38,37 +45,35 @@ final class CompletedViewController: UIViewController {
     }
 }
 
-
 // MARK: - UITableViewDataSource
 
 extension CompletedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskManager.filterIsCompleted().count
+        return viewModel.taskList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.completedTableViewCell, for: indexPath) as! CompletedTableViewCell
         
-        cell.task = taskManager.filterIsCompleted()[indexPath.row]
+        cell.task = viewModel.taskList[indexPath.row]
         
         return cell
     }
 }
-
 
 // MARK: - UITableViewDelegate
 
 extension CompletedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        detailVC.task = taskManager.filterIsCompleted()[indexPath.row]
+        let viewModel = DetailViewModel(dataManager: CoreDataManager.shared, title: "Detail")
+        let detailVC = DetailViewController(viewModel: viewModel)
+        detailVC.task = viewModel.taskList[indexPath.row]
         
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
-
 
 // MARK: - MakeUI
 
@@ -76,7 +81,7 @@ private extension CompletedViewController {
     
     func naviSetting() {
         view.backgroundColor = UIColors.white
-        self.title = "Completed"
+        self.title = viewModel.title
         
         navigationController?.navigationBar.tintColor = UIColors.black
         let backButton = UIBarButtonItem(title: "뒤로", style: .done, target: self, action: #selector(backButtonTapped))
@@ -98,7 +103,6 @@ private extension CompletedViewController {
         ])
     }
 }
-
 
 // MARK: - @objc func
 

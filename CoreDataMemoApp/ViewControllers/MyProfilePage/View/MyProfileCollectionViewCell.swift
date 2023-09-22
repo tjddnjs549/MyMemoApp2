@@ -9,6 +9,11 @@ import UIKit
 
 final class MyProfileCollectionViewCell: UICollectionViewCell{
     
+    var viewModel: ImageViewModel! {
+        didSet {
+            self.profileImageView.image = viewModel.itemimage
+        }
+    }
     
     var profileImageView: UIImageView = {
         let image = UIImageView()
@@ -20,7 +25,6 @@ final class MyProfileCollectionViewCell: UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //cellMakeUI()
     }
     
     required init?(coder: NSCoder) {
@@ -32,15 +36,12 @@ final class MyProfileCollectionViewCell: UICollectionViewCell{
     }
 }
 
-
 // MARK: - CellMakeUI
-
 extension MyProfileCollectionViewCell {
     
     func cellMakeUI() {
         makeCollectionViewUI()
     }
-    
     
     func makeCollectionViewUI() {
         self.addSubview(profileImageView)
@@ -50,7 +51,6 @@ extension MyProfileCollectionViewCell {
             profileImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0),
             profileImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0),
             profileImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0)
-
         ])
         
     }

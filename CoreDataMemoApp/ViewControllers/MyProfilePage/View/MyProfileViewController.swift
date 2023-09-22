@@ -12,16 +12,8 @@ final class MyProfileViewController: UIViewController {
     
     var profileView = MyProfileView()
     
-    var imageItemArray: [UIImage] = [
-        UIImage(named: "1")!.resized(to: CGSize(width: 130, height: 130)),
-        UIImage(named: "2")!.resized(to: CGSize(width: 130, height: 130)),
-        UIImage(named: "3")!.resized(to: CGSize(width: 130, height: 130)),
-        UIImage(named: "4")!.resized(to: CGSize(width: 130, height: 130)),
-        UIImage(named: "5")!.resized(to: CGSize(width: 130, height: 130)),
-        UIImage(named: "6")!.resized(to: CGSize(width: 130, height: 130)),
-        UIImage(named: "7")!.resized(to: CGSize(width: 130, height: 130))
-    ]
-    
+    var viewModel: MyprofileViewModel
+
     private lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collection.showsHorizontalScrollIndicator = false
@@ -29,6 +21,15 @@ final class MyProfileViewController: UIViewController {
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
+    
+    init(viewModel: MyprofileViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = profileView
@@ -38,6 +39,7 @@ final class MyProfileViewController: UIViewController {
         super.viewDidLoad()
         collectionViewSetting()
         viewMakeUI()
+        //viewModel.imageList
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
@@ -45,7 +47,6 @@ final class MyProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
 }
@@ -54,11 +55,11 @@ final class MyProfileViewController: UIViewController {
 extension MyProfileViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return viewModel.minimumInteritemSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return viewModel.minimumLineSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -99,7 +100,7 @@ extension MyProfileViewController: UICollectionViewDataSource {
     
     //셀 몇개?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageItemArray.count
+        return viewModel.numberOfRowsInSection(section)
     }
     
     //셀 어떤 식으로 보여줘? -> 컬렉션뷰가 2개면 여기서 셀을 등록해야 한다⭐️⭐️⭐️⭐️⭐️
@@ -107,8 +108,8 @@ extension MyProfileViewController: UICollectionViewDataSource {
         print(#function)
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: Cell.myProfileCollectionViewCell, for: indexPath) as! MyProfileCollectionViewCell
         
-            cell.profileImageView.image = self.imageItemArray[indexPath.item]
-        
+        let item = viewModel.memberViewModelAtIndex(indexPath.item)
+        cell.viewModel = item
         return cell
         
     }
@@ -130,7 +131,6 @@ private extension MyProfileViewController {
         view.backgroundColor = UIColors.white
         naviSetting()
     }
-    
     
     func naviSetting() {
         self.navigationItem.title = "nabaecamp"
@@ -207,7 +207,7 @@ extension MyProfileViewController: PHPickerViewControllerDelegate {
             itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
                 if let image = image as? UIImage {
                     DispatchQueue.main.async {
-                        self.imageItemArray.append(image.resized(to: CGSize(width: 130, height: 130)))
+                        self.viewModel.insertCollectionImage(image: Image(image: image.resized(to: CGSize(width: 130, height: 130))))
                         self.collectionView.reloadData()
                     }
                 }

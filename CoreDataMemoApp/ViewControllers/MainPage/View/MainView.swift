@@ -10,7 +10,7 @@ final class MainView: UIView {
     
     var navigationController = UINavigationController()
     
-    private let checkToDoListButton: UIButton = {
+    private lazy var checkToDoListButton: UIButton = {
         let checkBtn = UIButton(type: .custom)
         checkBtn.buttonMakeUI(cornerRadius: 5, borderWidth: 2, borderColor: CGColors.orange, setTitle: "할 일 확인하기", font: Font.buttonFont, setTitleColor: UIColors.orange)
         checkBtn.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
@@ -18,14 +18,14 @@ final class MainView: UIView {
     }()
     
     
-    private let successToDoListButton: UIButton = {
+    private lazy var successToDoListButton: UIButton = {
         let successBtn = UIButton(type: .custom)
         successBtn.buttonMakeUI(cornerRadius: 5, borderWidth: 2, borderColor: CGColors.orange, setTitle: "완료한 일 확인", font: Font.buttonFont, setTitleColor: UIColors.orange)
         successBtn.addTarget(self, action: #selector(successButtonTapped), for: .touchUpInside)
         return successBtn
     }()
     
-    lazy var homeImage: UIImageView = {
+    private lazy var homeImage: UIImageView = {
         let image = UIImageView()
         let url = URL(string: Url.imageUrl)
         image.load(url: url!)
@@ -33,7 +33,7 @@ final class MainView: UIView {
         return image
     }()
     
-    lazy var buttonStackView: UIStackView = {
+    private lazy var buttonStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [checkToDoListButton, successToDoListButton])
         stack.spacing = 20 // 간격
         stack.axis = .horizontal
@@ -66,12 +66,16 @@ final class MainView: UIView {
 private extension MainView {
     
     @objc func checkButtonTapped() {
-        let todoVC = TodoViewController()
+        let coreDataManager = CoreDataManager.shared
+        let viewModel = TodoViewModel(dataManager: coreDataManager, title: "Main")
+        let todoVC = TodoViewController(viewModel: viewModel)
         self.navigationController.pushViewController(todoVC, animated: true)
     }
     
     @objc func successButtonTapped() {
-        let completedVC = CompletedViewController()
+        let coreDataManager = CoreDataManager.shared
+        let viewModel = CompletedViewModel(dataManager: coreDataManager, title: "Completed")
+        let completedVC = CompletedViewController(viewModel: viewModel)
         self.navigationController.pushViewController(completedVC, animated: true)
     }
 }

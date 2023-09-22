@@ -64,9 +64,6 @@ final class TodoTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
-    
 }
 
 // MARK: - CellMakeUI
